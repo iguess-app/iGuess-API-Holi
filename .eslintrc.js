@@ -68,7 +68,6 @@ module.exports = {
         "lines-around-comment": "error",
         "lines-around-directive": "error",
         "max-depth": "error",
-        "max-len": "error",
         "max-lines": "error",
         "max-nested-callbacks": "error",
         "max-params": "error",
@@ -175,7 +174,6 @@ module.exports = {
             "error",
             "always"
         ],
-        "object-property-newline": "error",
         "object-shorthand": "error",
         "one-var": "off",
         "one-var-declaration-per-line": "error",
