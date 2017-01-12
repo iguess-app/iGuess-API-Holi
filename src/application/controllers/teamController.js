@@ -11,12 +11,5 @@ module.exports = (app) => {
       });
   }
 
-  const setTeams = (request, reply) => {
-    return true;
-  }
-
-  return {
-    getTeams,
-    setTeams
-  }
+  return { getTeams }
 }
