@@ -7,7 +7,7 @@ module.exports = (app) => {
   const server = app.configServer;
 
   server.route({
-    path: '/getteams',
+    path: '/getteamsbyleague',
     method: 'POST',
     config: {
       handler: (request, reply) => {
@@ -20,21 +20,17 @@ module.exports = (app) => {
           countryInitials: Joi.string().required(),
           name: Joi.string().required(),
           serie: Joi.number().required(),
-          teams: Joi.array()
+          teams: Joi.array().items(
+            Joi.object({
+              shortName: Joi.string().required(),
+              fullName: Joi.string(),
+              logo: Joi.string(),
+              league: Joi.string()
+            }).unknown())
         }).unknown()
         .meta({ className: 'Response' })
       }
     }
   })
 
-  server.route({
-    path: '/setteams',
-    method: 'POST',
-    config: {
-      handler: (request, reply) => {
-
-        teamController.setTeams(request, reply)
-      }
-    }
-  })
 };
