@@ -3,6 +3,7 @@ const app = {};
 
 consign()
   .include('configServer.js')
+  .include('src/config.js')
   .include('src/helpers')
   .include('src/utils')
   .include('src/managers')
@@ -21,5 +22,5 @@ app.configServer.start((err) => {
     throw err;
   }
 
-  console.log((`Server running at ${app.configServer.info.uri}`));
+  console.log(`Server running at ${app.configServer.info.uri}`);
 })
