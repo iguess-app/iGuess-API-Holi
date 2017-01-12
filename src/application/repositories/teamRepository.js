@@ -1,30 +1,33 @@
 'use Strict';
 
 const Boom = require('boom');
+const Promise = require('bluebird');
 
 module.exports = (app) => {
   const League = app.src.schemas.leagueSchema;
   const Team = app.src.schemas.teamSchema;
 
-  const getTeams = (reqBody) => new Promise((resolve, reject) => {
-    League.findOne({ 'countryInitials': reqBody.countryInitials, 'serie': reqBody.serie }, 
-    (leagueErr, league) => {
-      if (leagueErr) {
-        reject(Boom.badData(leagueErr));
-      }
-      //Create here some exception to when there is no league.id
-      Team.find({ 'league': league.id }, { '_id': 0, 'league': 0, 'fullName': 0, 'logo':0 }, 
-      (teamErr, teams) => {
-        if (teamErr) {
-          reject(teamErr)
-        }
+  const getTeams = (reqBody) => 
+    _findLeague(reqBody)
+      .then((league) => _makeObject(league))
+      .then((league) => _findTeams(league))
+      .catch((err) => Boom.badData(err))
 
-        const leagueObj = league.toObject();
-        leagueObj.teams = teams;
-        resolve(leagueObj)
+  const _findLeague = (reqBody) => 
+    Promise.resolve(League.findOne({ 'countryInitials': reqBody.countryInitials, 'serie': reqBody.serie })
+      .then((league) => league)
+      .catch((err) => err)
+    )
+    
+  const _makeObject = (league) => league.toObject()
+
+  const _findTeams = (league) =>
+    Team.find({ 'league': league._id }, { '_id': 0, 'league': 0, 'fullName': 0, 'logo': 0 })
+      .then((teams) => {
+        league.teams = teams;
+        
+        return league;
       })
-    })
-  })
 
   return { getTeams }
 }
