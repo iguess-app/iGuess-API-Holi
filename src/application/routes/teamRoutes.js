@@ -7,12 +7,19 @@ module.exports = (app) => {
   const server = app.configServer;
 
   server.route({
-    path: '/getteamsbyleague',
+    path: '/team/teamsbyleague',
     method: 'POST',
     config: {
       handler: (request, reply) => {
 
         teamController.getTeams(request, reply)
+      },
+      validate: {
+        payload: Joi.object({
+          countryInitials: Joi.string().required(),
+          serie: Joi.number().required()
+        })
+        .meta({ className: 'Request' })
       },
       response: {
         schema: Joi.object({
