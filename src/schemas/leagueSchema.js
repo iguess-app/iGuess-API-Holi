@@ -22,5 +22,5 @@ module.exports = (app) => {
     serie: { type: Number }
   })
 
-  return db.model('league', leagueSchema);
+  return db.model('leagues', leagueSchema);
 }
