@@ -8,18 +8,15 @@ module.exports = (app) => {
 
   server.route({
     path: '/championship/getchampionshipbyleague',
-    method: 'POST',
+    method: 'GET',
     config: {
       handler: (request, reply) => {
 
         championshipController.getChampionshipByLeague(request, reply)
       },
       validate: {
-        payload: Joi.object({
-          championship: Joi.string().required(),
-          serie: Joi.number().required()
-        })
-        .meta({ className: 'Request' })
+        headers: Joi.object({ league: Joi.string().required() })
+        .unknown()
       },
       response: {
         schema: Joi.object().unknown()
@@ -39,7 +36,6 @@ module.exports = (app) => {
       validate: {
         headers: Joi.object({ championship: Joi.string().required() })
         .unknown()
-        .meta({ className: 'Request' })
       },
       response: {
         schema: Joi.object().unknown()

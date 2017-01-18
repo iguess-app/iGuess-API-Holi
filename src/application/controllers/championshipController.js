@@ -11,5 +11,15 @@ module.exports = (app) => {
       });
   }
 
-  return { getLastRound }
+  const getChampionshipByLeague = (request, reply) => {
+    championshipService.getChampionshipByLeague(request.headers)
+      .then((championships) => {
+        reply(championships)
+      });
+  }
+
+  return { 
+    getLastRound,
+    getChampionshipByLeague 
+  }
 }

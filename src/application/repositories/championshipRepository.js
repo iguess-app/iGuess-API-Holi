@@ -4,9 +4,13 @@ const Boom = require('boom');
 const Promise = require('bluebird');
 
 module.exports = (app) => {
-  const Round = app.src.schemas.roundShema;
+  const QueryUtils = app.src.utils.queryUtils;
+  const Round = app.src.schemas.roundSchema;
+  const Championship = app.src.schemas.championshipSchema;
 
   const getLastRound = (reqBody) => _findLastRound(reqBody)
+
+  const getChampionshipByLeague = (reqBody) => _findChampionshipByLeague(reqBody)
 
   const _findLastRound = (reqBody) => 
     Promise.resolve(Round
@@ -16,5 +20,15 @@ module.exports = (app) => {
       .catch((err) => Boom.badData(err))
     )
   
-  return { getLastRound }
+  const _findChampionshipByLeague = (reqBody) => 
+    Promise.resolve(Championship
+    .findOne({ 'league': reqBody.league })
+    .then((championships) => QueryUtils.makeObject(championships))
+    .catch((err) => Boom.badData(err))
+    )
+
+  return {
+    getLastRound,
+    getChampionshipByLeague
+  }
 }
