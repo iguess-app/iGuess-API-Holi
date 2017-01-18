@@ -8,18 +8,17 @@ module.exports = (app) => {
 
   server.route({
     path: '/team/teamsbyleague',
-    method: 'POST',
+    method: 'GET',
     config: {
       handler: (request, reply) => {
 
         teamController.getTeams(request, reply)
       },
       validate: {
-        payload: Joi.object({
-          countryInitials: Joi.string().required(),
+        headers: Joi.object({ 
+          countryinitials: Joi.string().required(),
           serie: Joi.number().required()
-        })
-        .meta({ className: 'Request' })
+        }).unknown()
       },
       response: {
         schema: Joi.object({
