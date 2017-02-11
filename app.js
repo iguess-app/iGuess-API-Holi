@@ -4,7 +4,6 @@ const app = {};
 consign()
   .include('configServer.js')
   .include('src/config.js')
-  .include('src/helpers')
   .include('src/utils')
   .include('src/managers')
   .include('src/schemas')
@@ -14,7 +13,6 @@ consign()
   .include('src/application/routes')
   .include('test/unitTests')
   .include('test/integratedTests')
-  .include('test/mock')
   .into(app);
 
 app.configServer.start((err) => {
