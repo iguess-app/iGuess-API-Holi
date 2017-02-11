@@ -15,10 +15,10 @@ module.exports = (app) => {
         teamController.getTeams(request, reply)
       },
       validate: {
-        headers: Joi.object({ 
+        query: Joi.object({ 
           countryinitials: Joi.string().required(),
           serie: Joi.number().required()
-        }).unknown()
+        })
       },
       response: {
         schema: Joi.object({

@@ -15,12 +15,11 @@ module.exports = (app) => {
         championshipController.getChampionshipByLeague(request, reply)
       },
       validate: {
-        headers: Joi.object({ league: Joi.string().required() })
-        .unknown()
+        query: Joi.object({league: Joi.string().required()})
       },
       response: {
         schema: Joi.object().unknown()
-        .meta({ className: 'Response' })
+          .meta({className: 'Response'})
       }
     }
   })
@@ -33,13 +32,9 @@ module.exports = (app) => {
 
         championshipController.getLastRound(request, reply)
       },
-      validate: {
-        headers: Joi.object({ championship: Joi.string().required() })
-        .unknown()
-      },
       response: {
         schema: Joi.object().unknown()
-        .meta({ className: 'Response' })
+          .meta({className: 'Response'})
       }
     }
   })
