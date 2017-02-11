@@ -5,7 +5,7 @@ module.exports = (app) => {
   const teamService = app.src.application.services.teamService;
   
   const getTeams = (request, reply) => {
-    teamService.getTeams(request.headers)
+    teamService.getTeams(request.query)
       .then((teams) => {
         reply(teams)
       });
