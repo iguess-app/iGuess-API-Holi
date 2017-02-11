@@ -3,7 +3,7 @@
 module.exports = (app) => {
   const teamRepository = app.src.application.repositories.teamRepository;
 
-  const getTeams = (reqBody) => teamRepository.getTeams(reqBody)
+  const getTeams = (payload) => teamRepository.getTeams(payload)
   
   return { getTeams }
 };

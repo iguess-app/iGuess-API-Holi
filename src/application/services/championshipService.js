@@ -3,9 +3,9 @@
 module.exports = (app) => {
   const championshipRepository = app.src.application.repositories.championshipRepository;
 
-  const getLastRound = (headers) => championshipRepository.getLastRound(headers)
+  const getLastRound = (payload) => championshipRepository.getLastRound(payload)
 
-  const getChampionshipByLeague = (headers) => championshipRepository.getChampionshipByLeague(headers)
+  const getChampionshipByLeague = (payload) => championshipRepository.getChampionshipByLeague(payload)
   
   return {
     getLastRound,
