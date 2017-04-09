@@ -11,7 +11,7 @@ module.exports = (app) => {
       type: String,
       required: true
     },
-    round: {
+    fixture: {
       type: Number,
       required: true
     },

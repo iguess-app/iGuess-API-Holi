@@ -15,7 +15,7 @@ module.exports = (app) => {
   const _findLastRound = (reqBody) => 
     Promise.resolve(Round
       .findOne({ 'championship': reqBody.championship })
-      .sort('-round')
+      .sort('-fixture')
       .then((lastRound) => lastRound)
       .catch((err) => Boom.badData(err))
     )
