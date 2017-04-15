@@ -105,13 +105,15 @@ module.exports = (app) => {
       }
     }
 
-    GuessesLines.update(searchQuery, updateQuery).then((queryResult) => {
-      if (queryResult.nModified) {
-        return true;
-      }
+    GuessesLines
+      .update(searchQuery, updateQuery)
+      .then((queryResult) => {
+        if (queryResult.nModified) {
+          return true;
+        }
 
-      return false;
-    })
+        return false;
+      })
   }
 
   const _getPontuation = (guessProperties, resultProperties) => {
