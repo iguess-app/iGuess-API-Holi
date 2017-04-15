@@ -1,6 +1,5 @@
 'use Strict';
 
-const Boom = require('boom');
 const Promise = require('bluebird');
 
 module.exports = (app) => {
@@ -25,8 +24,8 @@ module.exports = (app) => {
 
     return Promise.resolve(GuessLeague
       .create(GuessLeagueObj)
-      .then((DBResponse) => 
-        DBResponse
+      .then((DBResponse) =>
+        QueryUtils.makeObject(DBResponse)
       )
       .catch((err) =>
         QueryUtils.makeJSON(err)
