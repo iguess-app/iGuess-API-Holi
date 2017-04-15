@@ -8,6 +8,14 @@ module.exports = (app) => {
   const League = app.src.schemas.leagueSchema;
   const Team = app.src.schemas.teamSchema;
 
+  const leagueById = (id) =>
+  Team.findOne({_id: id}) 
+    .then((league) => QueryUtils.makeObject(league))
+
+  const teamById = (id) =>
+    Team.findOne({_id: id}) 
+      .then((team) => QueryUtils.makeObject(team))
+
   const getTeams = (reqBody) => 
     _findLeague(reqBody)
       .then((league) => _findTeams(league))
@@ -27,5 +35,9 @@ module.exports = (app) => {
         return league;
       })
 
-  return { getTeams }
+  return { 
+    leagueById, 
+    teamById, 
+    getTeams 
+  }
 }
