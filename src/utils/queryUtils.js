@@ -3,5 +3,10 @@
 module.exports = () => {
   const makeObject = (queryResult) => queryResult.toObject()
 
-  return { makeObject }
+  const makeJSON = (queryResult) => queryResult.toJSON()
+
+  return {
+    makeObject,
+    makeJSON
+  }
 }
