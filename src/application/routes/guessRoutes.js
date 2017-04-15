@@ -19,10 +19,38 @@ module.exports = (app) => {
       },
       response: {
         schema: Joi.object().unknown()
-          .meta({className: 'Response'})
+          .meta({
+            className: 'Response'
+          })
       }
     }
   })
 
+
+  server.route({
+    path: '/guessleague/create',
+    method: 'POST',
+    config: {
+      handler: (request, reply) => {
+
+        guessController.createLeague(request, reply)
+      },
+      validate: {
+        query: Joi.object({}),
+        payload: Joi.object({
+          leagueName: Joi.string().required(),
+          championship: Joi.string().required(),
+          userID: Joi.string().required(),
+          invited: Joi.array().required()
+        })
+      },
+      response: {
+        schema: Joi.object().unknown()
+          .meta({
+            className: 'Response'
+          })
+      }
+    }
+  })
 
 };
