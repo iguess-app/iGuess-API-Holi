@@ -8,15 +8,21 @@ module.exports = (app) => {
   const Round = app.src.schemas.roundSchema;
   const Championship = app.src.schemas.championshipSchema;
 
+  const championshipById = (id) =>
+    Championship.findOne({_id: id}) 
+      .then((championship) => QueryUtils.makeObject(championship))
+
   const getLastRound = (reqBody) => _findLastRound(reqBody)
 
   const getChampionshipByLeague = (reqBody) => _findChampionshipByLeague(reqBody)
+
+  const getFixtureByNumber = (reqBody) => _findFixtureChosen(reqBody)
 
   const _findLastRound = (reqBody) => 
     Promise.resolve(Round
       .findOne({ 'championship': reqBody.championship })
       .sort('-fixture')
-      .then((lastRound) => lastRound)
+      .then((lastRound) => QueryUtils.makeObject(lastRound))
       .catch((err) => Boom.badData(err))
     )
   
@@ -27,8 +33,15 @@ module.exports = (app) => {
     .catch((err) => Boom.badData(err))
     )
 
+  const _findFixtureChosen = (reqBody) => 
+    Round
+      .findOne({ 'championship': reqBody.championship, 'fixture': reqBody.fixture})
+      .then((fixtureChosen) => QueryUtils.makeObject(fixtureChosen))
+
   return {
+    championshipById,
     getLastRound,
-    getChampionshipByLeague
+    getChampionshipByLeague,
+    getFixtureByNumber
   }
 }
