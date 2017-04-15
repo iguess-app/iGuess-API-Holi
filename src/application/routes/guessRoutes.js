@@ -53,4 +53,29 @@ module.exports = (app) => {
     }
   })
 
+  server.route({
+    path: '/guessleague/inviteResponse',
+    method: 'POST',
+    config: {
+      handler: (request, reply) => {
+
+        guessController.responseInvite(request, reply)
+      },
+      validate: {
+        query: Joi.object({}),
+        payload: Joi.object({
+          leagueName: Joi.string().required(),
+          userID: Joi.string().required(),
+          invitedAccepted: Joi.bool().required()
+        })
+      },
+      response: {
+        schema: Joi.object().unknown()
+          .meta({
+            className: 'Response'
+          })
+      }
+    }
+  })
+
 };

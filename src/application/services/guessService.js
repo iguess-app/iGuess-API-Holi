@@ -5,16 +5,21 @@ module.exports = (app) => {
 
   const createLeague = (payload, headers) =>
     guessRepository.createLeague(payload, headers)
-    .then((createdLeague) => {
-      //TODO Add on profile the invite (createdLeague.players)
-      return createdLeague;
-    })
-    .catch((err) => {
+    .then((createdLeague) => 
+      //TODO Add on profile.notifications the invite (createdLeague.players)
+       createdLeague)
+    .catch((err) => 
       //TODO verify if err.code===11000 and return 'leagueName already in use'
-       return err;
-    })
+       err)
+
+  const responseInvite = (payload, headers) =>
+    guessRepository.responseInvite(payload, headers)
+    .then((response) => response)
+    .catch((err) => err)
+
 
   return {
-    createLeague
+    createLeague,
+    responseInvite
   }
 };
