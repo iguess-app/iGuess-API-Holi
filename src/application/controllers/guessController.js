@@ -14,7 +14,7 @@ module.exports = (app) => {
     const headers = request.headers;
 
     guessService.createLeague(payload, headers)
-      .then((response) => reply(response))
+      .then((response) => reply(response).code(201)) //TODO use statusUtil
       .catch((err) => reply(err))
   }
 
