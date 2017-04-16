@@ -72,6 +72,7 @@ module.exports = (app) => {
       }
     }
     //TODO if is the admnistrator, dont let quit
+
     return GuessLeague
       .update(searchQuery, updateQuery)
       .then((queryResult) => {
