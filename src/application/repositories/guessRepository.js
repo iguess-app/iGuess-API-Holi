@@ -37,7 +37,7 @@ module.exports = (app) => {
     )
   }
 
-  const responseInvite = (request) => {
+  const inviteResponse = (request) => {
 
     const newStatus = request.invitedAccepted ? PLAYING : DECLINED;
     const searchQuery = {
@@ -65,6 +65,6 @@ module.exports = (app) => {
 
   return {
     createLeague,
-    responseInvite
+    inviteResponse
   }
 }

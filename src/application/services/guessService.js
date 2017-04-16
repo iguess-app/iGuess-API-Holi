@@ -12,14 +12,14 @@ module.exports = (app) => {
       //TODO verify if err.code===11000 and return 'leagueName already in use'
        err)
 
-  const responseInvite = (payload, headers) =>
-    guessRepository.responseInvite(payload, headers)
+  const inviteResponse = (payload, headers) =>
+    guessRepository.inviteResponse(payload, headers)
     .then((response) => response)
     .catch((err) => err)
 
 
   return {
     createLeague,
-    responseInvite
+    inviteResponse
   }
 };

@@ -22,11 +22,11 @@ module.exports = (app) => {
       )
   }
 
-  const responseInvite = (request, reply) => {
+  const inviteResponse = (request, reply) => {
     const payload = request.payload;
     const headers = request.headers;
 
-    guessService.responseInvite(payload, headers)
+    guessService.inviteResponse(payload, headers)
       .then((response) => reply(response))
       .catch((err) => reply(err))
   }
@@ -34,6 +34,6 @@ module.exports = (app) => {
   return {
     laucher,
     createLeague,
-    responseInvite
+    inviteResponse
   }
 }

@@ -59,7 +59,7 @@ module.exports = (app) => {
     config: {
       handler: (request, reply) => {
 
-        guessController.responseInvite(request, reply)
+        guessController.inviteResponse(request, reply)
       },
       validate: {
         query: Joi.object({}),
