@@ -21,7 +21,7 @@ module.exports = (app) => {
     }))
 
     const GuessLeagueObj = {
-      _id: request.leagueName,
+      _id: request.guessLeagueName,
       administrator: request.userID,
       players: invitedPlayers
     }
@@ -41,7 +41,7 @@ module.exports = (app) => {
 
     const newStatus = request.invitedAccepted ? PLAYING : DECLINED;
     const searchQuery = {
-      '_id': request.leagueName,
+      '_id': request.guessLeagueName,
       'players.userID': request.userID
     }
     const updateQuery = {
@@ -49,7 +49,6 @@ module.exports = (app) => {
         'players.$.status': newStatus
       }
     }
-    //TODO response of this route is 500, discover why
 
     return GuessLeague
       .update(searchQuery, updateQuery)
@@ -60,11 +59,33 @@ module.exports = (app) => {
 
         return false;
       })
+  }
 
+  const quitGuessLeague = (request) => {
+    const searchQuery = {
+      '_id': request.guessLeagueName,
+      'players.userID': request.userID
+    }
+    const updateQuery = {
+      '$set': {
+        'players.$.status': QUITTED
+      }
+    }
+    //TODO if is the admnistrator, dont let quit
+    return GuessLeague
+      .update(searchQuery, updateQuery)
+      .then((queryResult) => {
+        if (queryResult.nModified) {
+          return true;
+        }
+
+        return false;
+      })
   }
 
   return {
     createLeague,
-    inviteResponse
+    inviteResponse,
+    quitGuessLeague
   }
 }

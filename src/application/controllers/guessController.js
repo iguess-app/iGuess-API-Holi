@@ -14,12 +14,8 @@ module.exports = (app) => {
     const headers = request.headers;
 
     guessService.createLeague(payload, headers)
-      .then((response) =>
-        reply(response)
-      )
-      .catch((err) =>
-        reply(err)
-      )
+      .then((response) => reply(response))
+      .catch((err) => reply(err))
   }
 
   const inviteResponse = (request, reply) => {
@@ -31,9 +27,19 @@ module.exports = (app) => {
       .catch((err) => reply(err))
   }
 
+  const quitGuessLeague = (request, reply) => {
+    const payload = request.payload;
+    const headers = request.headers;
+
+    guessService.quitGuessLeague(payload, headers)
+      .then((response) => reply(response))
+      .catch((err) => reply(err))
+  }
+
   return {
     laucher,
     createLeague,
-    inviteResponse
+    inviteResponse,
+    quitGuessLeague
   }
 }

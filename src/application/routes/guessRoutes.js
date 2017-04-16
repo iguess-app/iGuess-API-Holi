@@ -38,7 +38,7 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({}),
         payload: Joi.object({
-          leagueName: Joi.string().required(),
+          guessguessLeagueName: Joi.string().required(),
           championship: Joi.string().required(),
           userID: Joi.string().required(),
           invited: Joi.array().required()
@@ -55,7 +55,7 @@ module.exports = (app) => {
 
   server.route({
     path: '/guessleague/inviteResponse',
-    method: 'POST',
+    method: 'PUT',
     config: {
       handler: (request, reply) => {
 
@@ -64,16 +64,28 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({}),
         payload: Joi.object({
-          leagueName: Joi.string().required(),
+          guessLeagueName: Joi.string().required(),
           userID: Joi.string().required(),
           invitedAccepted: Joi.bool().required()
         })
+      }
+    }
+  })
+
+  server.route({
+    path: '/guessleague/quit',
+    method: 'PUT',
+    config: {
+      handler: (request, reply) => {
+
+        guessController.quitGuessLeague(request, reply)
       },
-      response: {
-        schema: Joi.object().unknown()
-          .meta({
-            className: 'Response'
-          })
+      validate: {
+        query: Joi.object({}),
+        payload: Joi.object({
+          guessLeagueName: Joi.string().required(),
+          userID: Joi.string().required()
+        })
       }
     }
   })
