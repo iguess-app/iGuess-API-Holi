@@ -1,7 +1,6 @@
 'use Strict';
 
 module.exports = (app) => {
-
   const championshipService = app.src.application.services.championshipService;
   
   const getLastRound = (request, reply) => {

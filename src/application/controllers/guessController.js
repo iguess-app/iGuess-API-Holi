@@ -1,7 +1,6 @@
 'use Strict';
 
 module.exports = (app) => {
-
   const guessService = app.src.application.services.guessService;
 
   const laucher = (request, reply) => {
