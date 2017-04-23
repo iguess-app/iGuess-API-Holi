@@ -38,7 +38,7 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({}),
         payload: Joi.object({
-          guessguessLeagueName: Joi.string().required(),
+          guessLeagueName: Joi.string().required(),
           championship: Joi.string().required(),
           userID: Joi.string().required(),
           invited: Joi.array().required()
