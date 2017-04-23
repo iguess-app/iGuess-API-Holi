@@ -2,14 +2,14 @@
 
 const Promise = require('bluebird');
 
-module.exports = (app) => {
+const INVITED = 'invited';
+const PLAYING = 'playing';
+const DECLINED = 'declined';
+const QUITTED = 'quitted';
 
-  const QueryUtils = app.src.utils.queryUtils;
-  const GuessLeague = app.src.schemas.guessesLeaguesSchema;
-  const INVITED = 'invited';
-  const PLAYING = 'playing';
-  const DECLINED = 'declined';
-  const QUITTED = 'quitted';
+module.exports = (app) => {
+  const QueryUtils = app.coincidents.Utils.queryUtils;
+  const GuessLeague = app.coincidents.Schemas.guessesLeaguesSchema;
 
   const createLeague = (request) => {
     //TODO Check if the championshipID exists

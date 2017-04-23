@@ -1,12 +1,9 @@
 const consign = require('consign');
 const app = {};
+app.coincidents = require('../IGuess-API-Coincidents/app');
 
 consign()
   .include('configServer.js')
-  .include('src/config.js')
-  .include('src/utils')
-  .include('src/managers')
-  .include('src/schemas')
   .include('src/cron')
   .include('src/application/repositories')
   .include('src/application/services')

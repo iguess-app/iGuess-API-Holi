@@ -4,9 +4,9 @@ const Boom = require('boom');
 const Promise = require('bluebird');
 
 module.exports = (app) => {
-  const QueryUtils = app.src.utils.queryUtils;
-  const League = app.src.schemas.leagueSchema;
-  const Team = app.src.schemas.teamSchema;
+  const QueryUtils = app.coincidents.Utils.queryUtils;
+  const League = app.coincidents.Schemas.leagueSchema;
+  const Team = app.coincidents.Schemas.teamSchema;
 
   const leagueById = (id) =>
   Team.findOne({_id: id}) 

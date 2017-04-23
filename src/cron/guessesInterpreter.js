@@ -9,10 +9,10 @@ const AWAY_WINNER = 'AWAY';
 const NO_WINNER = 'DRAW';
 
 module.exports = (app) => {
-  const GuessesLines = app.src.schemas.guessesLinesSchema;
-  const Round = app.src.schemas.roundSchema;
-  const QueryUtils = app.src.utils.queryUtils;
-  //TODO: Added ProfileSchema
+  const GuessesLines = app.coincidents.Schemas.guessesLinesSchema;
+  const Round = app.coincidents.Schemas.roundSchema;
+  const QueryUtils = app.coincidents.Utils.queryUtils;
+  const ProfileSchema = app.coincidents.Schemas.profileSchema;
 
   const yoo = () => {
 
