@@ -2,7 +2,7 @@
   "name": "iguess-api-gate",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": ""
   },
@@ -15,8 +15,6 @@
     "joi": "^10.1.0",
     "lab": "^12.1.0",
     "loadash": "0.0.1",
-    "md5": "^2.2.1",
-    "mongoose": "^4.7.6",
-    "redis": "^2.6.3"
+    "mongoose": "^4.7.6"
   }
 }
