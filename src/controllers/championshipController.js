@@ -19,7 +19,7 @@ module.exports = (app) => {
   }
 
   const getChampionship = (request, reply) => {
-    championshipService.getChampionship(request.query, request.headers)
+    getChampionshipService.getChampionship(request.query, request.headers)
       .then((championship) => {
         reply(championship)
       })
