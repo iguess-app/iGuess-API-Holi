@@ -8,10 +8,6 @@ module.exports = (app) => {
   const Round = app.coincidents.Schemas.roundSchema;
   const Championship = app.coincidents.Schemas.championshipSchema;
 
-  const championshipById = (id) =>
-    Championship.findOne({_id: id}) 
-      .then((championship) => QueryUtils.makeObject(championship))
-
   const getLastRound = (reqBody) => _findLastRound(reqBody)
 
   const getChampionshipByLeague = (reqBody) => _findChampionshipByLeague(reqBody)
@@ -39,7 +35,6 @@ module.exports = (app) => {
       .then((fixtureChosen) => QueryUtils.makeObject(fixtureChosen))
 
   return {
-    championshipById,
     getLastRound,
     getChampionshipByLeague,
     getFixtureByNumber
