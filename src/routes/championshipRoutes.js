@@ -15,11 +15,15 @@ module.exports = (app) => {
         championshipController.getChampionshipByLeague(request, reply)
       },
       validate: {
-        query: Joi.object({league: Joi.string().required()})
+        query: Joi.object({
+          league: Joi.string().required()
+        })
       },
       response: {
         schema: Joi.object().unknown()
-          .meta({className: 'Response'})
+          .meta({
+            className: 'Response'
+          })
       }
     }
   })
@@ -34,7 +38,31 @@ module.exports = (app) => {
       },
       response: {
         schema: Joi.object().unknown()
-          .meta({className: 'Response'})
+          .meta({
+            className: 'Response'
+          })
+      }
+    }
+  })
+
+  server.route({
+    path: '/championship/getChampionship',
+    method: 'GET',
+    config: {
+      handler: (request, reply) => {
+
+        championshipController.getChampionship(request, reply)
+      },
+      validate: {
+        query: Joi.object({
+          championshipId: Joi.string().required()
+        })
+      },
+      response: {
+        schema: Joi.object().unknown()
+          .meta({
+            className: 'Response'
+          })
       }
     }
   })
