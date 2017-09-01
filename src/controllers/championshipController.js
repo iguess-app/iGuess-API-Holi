@@ -3,6 +3,7 @@
 module.exports = (app) => {
   const championshipService = app.src.services.championshipService;
   const getChampionshipService = app.src.services.championship.getChampionshipService;
+  const getAllchampionshipService = app.src.services.championship.getAllchampionshipService;
 
   const getLastRound = (request, reply) => {
     championshipService.getLastRound(request.query)
@@ -18,8 +19,18 @@ module.exports = (app) => {
       });
   }
 
-  const getChampionship = (request, reply) => {
-    getChampionshipService.getChampionship(request.query, request.headers)
+  const getChampionshipById = (request, reply) => {
+    getChampionshipService.getChampionshipById(request.query, request.headers)
+      .then((championship) => {
+        reply(championship)
+      })
+      .catch((err) =>
+        reply(err)
+      );
+  }
+
+  const getAllchampionship = (request, reply) => {
+    getAllchampionshipService.getAllchampionship(request.query, request.headers)
       .then((championship) => {
         reply(championship)
       })
@@ -31,6 +42,7 @@ module.exports = (app) => {
   return {
     getLastRound,
     getChampionshipByLeague,
-    getChampionship
+    getChampionshipById,
+    getAllchampionship
   }
 }

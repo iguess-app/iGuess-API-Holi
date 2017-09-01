@@ -46,12 +46,12 @@ module.exports = (app) => {
   })
 
   server.route({
-    path: '/championship/getChampionship',
+    path: '/championship/getChampionshipById',
     method: 'GET',
     config: {
       handler: (request, reply) => {
 
-        championshipController.getChampionship(request, reply)
+        championshipController.getChampionshipById(request, reply)
       },
       validate: {
         query: Joi.object({
@@ -61,6 +61,27 @@ module.exports = (app) => {
       response: {
         schema: Joi.object().unknown()
           .meta({
+            className: 'Response'
+          })
+      }
+    }
+  })
+
+  server.route({
+    path: '/championship/getAllchampionship',
+    method: 'GET',
+    config: {
+      handler: (request, reply) => {
+
+        championshipController.getAllchampionship(request, reply)
+      },
+      validate: {
+        query: Joi.object({
+          onlyActive: Joi.bool().default(false)
+        })
+      },
+      response: {
+        schema: Joi.array().meta({
             className: 'Response'
           })
       }

@@ -7,7 +7,7 @@ module.exports = (app) => {
   const QueryUtils = app.coincidents.Utils.queryUtils;
   const Championship = app.coincidents.Schemas.championshipSchema;
 
-  const getChampionship = (payload) => {
+  const getChampionshipById = (payload) => {
     const searchQuery = {
       _id: payload.championshipId
     }
@@ -17,6 +17,6 @@ module.exports = (app) => {
   }
 
   return {
-    getChampionship
+    getChampionshipById
   }
 }

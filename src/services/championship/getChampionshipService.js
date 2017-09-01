@@ -1,17 +1,15 @@
 'use Strict';
 
-const Promise = require('bluebird');
-
 module.exports = (app) => {
   const getChampionshipRepository = app.src.repositories.championship.getChampionshipRepository;
 
-  const getChampionship = (payload, headers) => {
+  const getChampionshipById = (payload, headers) => {
     const dictionary = app.coincidents.Translate.gate.selectLanguage(headers.language);
 
-    return getChampionshipRepository.getChampionship(payload, dictionary)
+    return getChampionshipRepository.getChampionshipById(payload, dictionary)
   }
 
   return {
-    getChampionship
+    getChampionshipById
   }
 };
