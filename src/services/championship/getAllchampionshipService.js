@@ -1,12 +1,12 @@
 'use Strict';
 
 module.exports = (app) => {
-  const getAllchampionshipRepository = app.src.repositories.championship.getAllchampionshipRepository;
+  const getAllChampionshipRepository = app.src.repositories.championship.getAllChampionshipRepository;
 
   const getAllchampionship = (payload, headers) => {
     const dictionary = app.coincidents.Translate.gate.selectLanguage(headers.language);
 
-    return getAllchampionshipRepository.getAllchampionship(payload, dictionary)
+    return getAllChampionshipRepository.getAllchampionship(payload, dictionary)
   }
 
   return {

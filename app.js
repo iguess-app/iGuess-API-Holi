@@ -13,7 +13,6 @@ consign()
   .include('src/routes')
   .into(app)
 
-
 app.configServer.register(plugins, () => {
   app.configServer.start((err) => {
     if (err) {

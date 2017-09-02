@@ -1,8 +1,7 @@
 'use Strict';
 
 module.exports = (app) => {
-  const QueryUtils = app.coincidents.Utils.queryUtils;
-  const Championship = app.coincidents.Schemas.championshipSchema;
+  const Championship = app.coincidents.Schemas.championshipSchema
 
   const getAllchampionship = (payload) => {
     const searchQuery = {}

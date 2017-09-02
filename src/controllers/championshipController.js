@@ -2,7 +2,7 @@
 
 module.exports = (app) => {
   const championshipService = app.src.services.championshipService;
-  const getChampionshipService = app.src.services.championship.getChampionshipService;
+  const getChampionshipByIdService = app.src.services.championship.getChampionshipByIdService;
   const getAllchampionshipService = app.src.services.championship.getAllchampionshipService;
 
   const getLastRound = (request, reply) => {
@@ -20,7 +20,7 @@ module.exports = (app) => {
   }
 
   const getChampionshipById = (request, reply) => {
-    getChampionshipService.getChampionshipById(request.query, request.headers)
+    getChampionshipByIdService.getChampionshipById(request.query, request.headers)
       .then((championship) => {
         reply(championship)
       })
