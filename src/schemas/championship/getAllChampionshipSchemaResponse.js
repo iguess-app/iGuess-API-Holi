@@ -10,13 +10,13 @@ module.exports = (app) => {
 
   const getAllChampionshipSchemaResponse = Joi.array().items(
     Joi.object({
-      _id: Joi.string().length(ID_SIZE).required(),
+      _id: Joi.object().required(),
       league: Joi.string().length(ID_SIZE).required(),
       season: Joi.string().required(),
       championship: Joi.string().required(),
       championshipActive: Joi.bool().required(),
       fixturesNames: Joi.array().items(fixtureSchema).required()
-    }))
+    }).unknown())
 
   return getAllChampionshipSchemaResponse
 }
