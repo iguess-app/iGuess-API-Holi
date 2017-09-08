@@ -3,11 +3,12 @@
 const Joi = require('joi');
 
 module.exports = (app) => {
-  const championshipController = app.src.controllers.championshipController;
-  const server = app.configServer;
+  const championshipController = app.src.controllers.championshipController
+  const server = app.configServer
+  const schemas = app.src.schemas
 
   server.route({
-    path: '/championship/getchampionshipbyleague',
+    path: '/championship/getChampionshipByLeague',
     method: 'GET',
     config: {
       handler: (request, reply) => {
@@ -78,12 +79,11 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({
           onlyActive: Joi.bool().default(false)
-        })
+        }),
+        headers: schemas.defaultHeaderSchema
       },
       response: {
-        schema: Joi.array().meta({
-            className: 'Response'
-          })
+        schema: schemas.championship.getAllChampionshipSchemaResponse
       }
     }
   })
