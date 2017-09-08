@@ -21,7 +21,7 @@ module.exports = (app) => {
         })
       },
       response: {
-        schema: Joi.object().unknown()
+        schema: Joi.array()
           .meta({
             className: 'Response'
           })

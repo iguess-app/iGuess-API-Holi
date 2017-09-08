@@ -24,8 +24,7 @@ module.exports = (app) => {
   
   const _findChampionshipByLeague = (reqBody) => 
     Promise.resolve(Championship
-    .findOne({ 'league': reqBody.league })
-    .then((championships) => QueryUtils.makeObject(championships))
+    .find({ 'league': reqBody.league })
     .catch((err) => Boom.badData(err))
     )
 
