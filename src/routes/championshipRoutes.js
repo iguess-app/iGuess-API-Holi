@@ -18,7 +18,8 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({
           league: Joi.string().required()
-        })
+        }),
+        headers: schemas.defaultHeaderSchema
       },
       response: {
         schema: Joi.array()
@@ -57,7 +58,8 @@ module.exports = (app) => {
       validate: {
         query: Joi.object({
           championshipId: Joi.string().required()
-        })
+        }),
+        headers: schemas.defaultHeaderSchema
       },
       response: {
         schema: Joi.object().unknown()
