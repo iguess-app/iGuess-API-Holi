@@ -8,7 +8,7 @@ const League = app.src.models.leagueModel
 
 const guessLinesSchemas = JSON.parse(fs.readFileSync('test/modelTests/SchemaFiles/leagueSchemasFile.json'))
 
-lab.experiment('LeagueSchema Validator', () => {
+lab.experiment('Model Test ==> LeagueSchema Validator', () => {
 
   lab.test('LeagueSchema HappyPath', (done) => {
     const correctSchema = new League(guessLinesSchemas.correctSchema)

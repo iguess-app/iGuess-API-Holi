@@ -5,7 +5,7 @@ const expect = Lab.expect
 const app = require('../../app')
 const Championship = app.src.models.championshipModel
 
-lab.experiment('ChampionshipSchema Validator', () => {
+lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
 
   lab.test('ChampionshipSchema HappyPath', (done) => {
     const campBR = new Championship({

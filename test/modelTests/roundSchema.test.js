@@ -10,7 +10,7 @@ const serverErrors = app.coincidents.Utils.errorUtils.serverErrors
 
 const roundSchemas = JSON.parse(fs.readFileSync('test/modelTests/SchemaFiles/roundSchemasFile.json'))
 
-lab.experiment('RoundSchema Validator', () => {
+lab.experiment('Model Test ==> RoundSchema Validator', () => {
 
   lab.test('RoundSchema HappyPath', (done) => {
     const correctSchema = new Round(roundSchemas.correctSchema)

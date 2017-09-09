@@ -6,7 +6,7 @@ const app = require('../../app')
 const Team = app.src.models.teamModel
 const serverErrors = app.coincidents.Utils.errorUtils.serverErrors
 
-lab.experiment('TeamSchema Validator', () => {
+lab.experiment('Model Test ==> TeamSchema Validator', () => {
 
   lab.test('TeamSchema HappyPath', (done) => {
     const avai = new Team({
