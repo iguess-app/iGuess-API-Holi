@@ -1,0 +1,20 @@
+{
+  "correctSchema": {
+    "country" : "Brazil",
+    "countryInitials" : "br",
+    "name" : "Primeira Divisão",
+    "serie" : 1.0
+  },
+  "withOutContryInitials": {
+    "country" : "International Europe",
+    "countryInitials" : null,
+    "name" : "UEFA Champions League",
+    "serie" : 1.0
+  },
+  "serieNotNumber": {
+    "country" : "Spain",
+    "countryInitials" : "es",
+    "name" : "La Liga BBVA",
+    "serie" : "Primeira DIVISION"
+  }
+}

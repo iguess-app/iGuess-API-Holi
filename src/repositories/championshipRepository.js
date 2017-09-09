@@ -5,8 +5,8 @@ const Promise = require('bluebird');
 
 module.exports = (app) => {
   const QueryUtils = app.coincidents.Utils.queryUtils;
-  const Round = app.src.models.roundSchema;
-  const Championship = app.src.models.championshipSchema;
+  const Round = app.src.models.roundModel;
+  const Championship = app.src.models.championshipModel;
 
   const getLastRound = (reqBody) => _findLastRound(reqBody)
 

@@ -62,7 +62,7 @@ module.exports = (app) => {
       type: String,
       required: true
     }
-  }, optionsSchemas._idAndVersionKeyDisable)
+  }, optionsSchemas.versionKeyDisable)
 
   const roundSchema = new Schema({
     championshipRef: {

@@ -3,7 +3,7 @@
 const Boom = require('boom')
 
 module.exports = (app) => {
-  const Round = app.src.models.roundSchema
+  const Round = app.src.models.roundModel
 
   const getFixtureByChampionshipRefAndFixture = (payload, dictionary) => {
     const searchQuery = {

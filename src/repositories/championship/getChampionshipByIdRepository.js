@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 
 module.exports = (app) => {
   const QueryUtils = app.coincidents.Utils.queryUtils;
-  const Championship = app.src.models.championshipSchema;
+  const Championship = app.src.models.championshipModel;
 
   const getChampionshipById = (payload) => {
     const searchQuery = {
