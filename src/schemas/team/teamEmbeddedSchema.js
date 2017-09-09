@@ -13,7 +13,7 @@ module.exports = (app) => {
     fullName: Joi.string().required(),
     shortName: Joi.string().required(),
     logo: Joi.string(),
-    _id: Joi.object().required(),
+    _id: Joi.object()
   })
 
   return teamEmbbededSchema
