@@ -1,7 +1,7 @@
 'use Strict';
 
 module.exports = (app) => {
-  const Championship = app.coincidents.Schemas.championshipSchema
+  const Championship = app.src.models.championshipSchema
 
   const getAllchampionship = (payload) => {
     const searchQuery = {}
