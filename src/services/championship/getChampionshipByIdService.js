@@ -1,4 +1,4 @@
-'use Strict';
+'use strict'
 
 module.exports = (app) => {
   const getChampionshipByIdRepository = app.src.repositories.championship.getChampionshipByIdRepository;

@@ -1,4 +1,4 @@
-'use Strict';
+'use strict'
 
 module.exports = (app) => {
   const getFixtureByChampionshipRefAndFixtureService = app.src.services.fixtures.getFixtureByChampionshipRefAndFixtureService

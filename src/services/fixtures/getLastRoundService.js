@@ -1,4 +1,4 @@
-'use Strict';
+'use strict'
 
 module.exports = (app) => {
   const getLastRoundRepository = app.src.repositories.fixtures.getLastRoundRepository

@@ -1,4 +1,4 @@
-'use Strict';
+'use strict'
 
 module.exports = (app) => {
   const getFixtureByChampionshipRefAndFixtureRepository = app.src.repositories.fixtures.getFixtureByChampionshipRefAndFixtureRepository

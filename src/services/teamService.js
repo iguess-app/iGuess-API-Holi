@@ -1,4 +1,4 @@
-'use Strict';
+'use strict'
 
 module.exports = (app) => {
   const teamRepository = app.src.repositories.teamRepository;
