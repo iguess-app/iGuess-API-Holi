@@ -19,4 +19,15 @@ module.exports = (app) => {
       response: schemas.fixture.getFixtureByChampionshipRefAndFixtureSchemas.getFixtureByChampionshipRefAndFixtureResponse
     }
   })
+
+  server.route({
+    path: '/fixture/lastRound',
+    method: 'GET',
+    config: {
+      handler: (request, reply) => {
+
+        fixtureController.getLastRound(request, reply)
+      }
+    }
+  })
 }

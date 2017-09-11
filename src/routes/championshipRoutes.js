@@ -31,23 +31,6 @@ module.exports = (app) => {
   })
 
   server.route({
-    path: '/championship/lastRound',
-    method: 'GET',
-    config: {
-      handler: (request, reply) => {
-
-        championshipController.getLastRound(request, reply)
-      },
-      response: {
-        schema: Joi.object().unknown()
-          .meta({
-            className: 'Response'
-          })
-      }
-    }
-  })
-
-  server.route({
     path: '/championship/getChampionshipById',
     method: 'GET',
     config: {

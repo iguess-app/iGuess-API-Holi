@@ -1,16 +1,9 @@
-'use Strict';
+'use Strict'
 
 module.exports = (app) => {
-  const championshipService = app.src.services.championshipService;
-  const getChampionshipByIdService = app.src.services.championship.getChampionshipByIdService;
-  const getAllchampionshipService = app.src.services.championship.getAllchampionshipService;
-
-  const getLastRound = (request, reply) => {
-    championshipService.getLastRound(request.query, request.headers)
-      .then((round) => {
-        reply(round)
-      });
-  }
+  const championshipService = app.src.services.championshipService
+  const getChampionshipByIdService = app.src.services.championship.getChampionshipByIdService
+  const getAllchampionshipService = app.src.services.championship.getAllchampionshipService
 
   const getChampionshipByLeague = (request, reply) => {
     championshipService.getChampionshipByLeague(request.query, request.headers)
@@ -40,7 +33,6 @@ module.exports = (app) => {
   }
 
   return {
-    getLastRound,
     getChampionshipByLeague,
     getChampionshipById,
     getAllchampionship
