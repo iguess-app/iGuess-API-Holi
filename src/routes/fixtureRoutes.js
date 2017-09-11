@@ -27,6 +27,10 @@ module.exports = (app) => {
       handler: (request, reply) => {
 
         fixtureController.getLastRound(request, reply)
+      },
+      validate: {
+        query: schemas.fixture.getLastRoundSchema.getLastRoundRequest,
+        headers: schemas.defaultHeaderSchema
       }
     }
   })
