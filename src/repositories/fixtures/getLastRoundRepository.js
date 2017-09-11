@@ -6,14 +6,24 @@ module.exports = (app) => {
   const Round = app.src.models.roundModel
   const QueryUtils = app.coincidents.Utils.queryUtils;
 
-  const getLastRound = (reqBody) => _findLastRound(reqBody)
+  const getLastRound = (reqBody, dictionary) => _findLastRound(reqBody, dictionary)
 
-  const _findLastRound = (reqBody) => Round.findOne({
+  const _findLastRound = (reqBody, dictionary) => 
+    Round.findOne({
       'championshipRef': reqBody.championshipRef
     })
     .sort('-fixture')
-    .then((lastRound) => QueryUtils.makeObject(lastRound))
+    .then((lastRound) => {
+      _checkErrors(lastRound, dictionary)
+      return QueryUtils.makeObject(lastRound)
+    })
     .catch((err) => Boom.badData(err))
+
+  const _checkErrors = (lastRound, dictionary) => {
+    if (!lastRound) {
+      throw Boom.notFound(dictionary.roundNotFound)
+    }
+  }
 
   return {
     getLastRound

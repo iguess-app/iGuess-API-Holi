@@ -12,9 +12,8 @@ module.exports = (app) => {
 
   const getLastRound = (request, reply) => {
     getLastRoundService.getLastRound(request.query, request.headers)
-      .then((round) => {
-        reply(round)
-      });
+      .then((round) => reply(round))
+      .catch((err) => reply(err))
   }
 
   return {
