@@ -11,7 +11,7 @@ module.exports = (app) => {
   const _findLastRound = (reqBody, dictionary) => {
     const searchQuery = _buildSearchQuery(reqBody)
 
-    return Round.findOne(searchQuery).sort('-fixture')
+    return Round.findOne(searchQuery).sort('-fixtureNumber')
       .then((lastRound) => {
         _checkErrors(lastRound, dictionary)
         return QueryUtils.makeObject(lastRound)

@@ -75,6 +75,10 @@ module.exports = (app) => {
       required: true,
       validate: [validateFixture, String(userErrors.notValidFixture)]
     },
+    fixtureNumber: {
+      type: Number,
+      required: true
+    },
     games: {
       type: [gamesSchema],
       required: true
