@@ -30,6 +30,7 @@ lab.experiment('Model Test ==> RoundSchema Validator', () => {
       expect(err.errors['games.0.stadium'].message).to.be.equal('Path `stadium` is required.')
       expect(err.errors.started.message).to.be.equal('Path `started` is required.')
       expect(err.errors.ended.message).to.be.equal('Path `ended` is required.')
+      expect(err.errors.fixtureNumber.message).to.be.equal('Path `fixtureNumber` is required.')
       done()
     })
   }) 
