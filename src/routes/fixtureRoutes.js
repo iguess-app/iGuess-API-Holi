@@ -13,10 +13,10 @@ module.exports = (app) => {
         fixtureController.getFixtureByChampionshipRefAndFixture(request, reply)
       },
       validate: {
-        query: schemas.fixture.getFixtureByChampionshipRefAndFixtureSchemas.getFixtureByChampionshipRefAndFixtureRequest,
+        query: schemas.fixture.getFixtureByChampionshipRefAndFixtureSchemas.request,
         headers: schemas.defaultHeaderSchema
       },
-      response: schemas.fixture.getFixtureByChampionshipRefAndFixtureSchemas.getFixtureByChampionshipRefAndFixtureResponse
+      response: schemas.fixture.getFixtureByChampionshipRefAndFixtureSchemas.response
     }
   })
 

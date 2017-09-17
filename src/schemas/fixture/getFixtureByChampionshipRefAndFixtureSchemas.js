@@ -9,12 +9,12 @@ module.exports = (app) => {
   const Config = app.coincidents.Config
   const ID_SIZE = Config.mongo.idStringSize
 
-  const getFixtureByChampionshipRefAndFixtureRequest = Joi.object({
+  const request = Joi.object({
     fixture: fixtureSchema,
     championshipRef: Joi.string().length(ID_SIZE).required()
   })
 
-  const getFixtureByChampionshipRefAndFixtureResponse = {
+  const response = {
     schema: Joi.object({
         fixture: fixtureSchema,
         championshipRef: Joi.string().length(ID_SIZE).required(),
@@ -35,8 +35,8 @@ module.exports = (app) => {
   }
 
   return {
-    getFixtureByChampionshipRefAndFixtureRequest,
-    getFixtureByChampionshipRefAndFixtureResponse
+    request,
+    response
   }
 }
 
