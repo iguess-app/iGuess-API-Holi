@@ -58,9 +58,13 @@ module.exports = (app) => {
       type: Date,
       required: true
     },
+    ended: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     stadium: {
-      type: String,
-      required: true
+      type: String
     }
   }, optionsSchemas.versionKeyDisable)
 
@@ -70,25 +74,16 @@ module.exports = (app) => {
       required: true,
       validate: [mongo.checkObjectId, String(serverErrors.notMongoIdValid)]
     },
-    fixture: {
-      type: Mixed,
-      required: true,
-      validate: [validateFixture, String(userErrors.notValidFixture)]
+    date: {
+      type: Date,
+      required: true
     },
-    fixtureNumber: {
+    unixDate: {
       type: Number,
       required: true
     },
     games: {
       type: [gamesSchema],
-      required: true
-    },
-    started: {
-      type: Boolean,
-      required: true
-    },
-    ended: {
-      type: Boolean,
       required: true
     }
   }, optionsSchemas.versionKeyDisable)
