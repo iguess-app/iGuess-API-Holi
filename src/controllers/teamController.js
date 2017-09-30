@@ -1,14 +1,13 @@
 'use strict'
 
-module.exports = (app) => {
-  const teamService = app.src.services.teamService;
-  
-  const getTeams = (request, reply) => {
-    teamService.getTeams(request.query, request.headers)
-      .then((teams) => {
-        reply(teams)
-      });
-  }
+const teamService = require('../services/teamService')
 
-  return { getTeams }
+const getTeams = (request, reply) => {
+  teamService(request.query, request.headers)
+    .then((teams) => reply(teams))
+    .catch((err) => reply(err))
+}
+
+module.exports = {
+  getTeams
 }

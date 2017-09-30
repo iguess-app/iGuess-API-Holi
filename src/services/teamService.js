@@ -1,9 +1,7 @@
 'use strict'
 
-module.exports = (app) => {
-  const teamRepository = app.src.repositories.teamRepository;
+const teamRepository = require('../repositories/teamRepository')
 
-  const getTeams = (payload) => teamRepository.getTeams(payload)
-  
-  return { getTeams }
-};
+const getTeams = (payload) => teamRepository.getTeams(payload)
+
+module.exports = getTeams

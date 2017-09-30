@@ -3,20 +3,15 @@
 const Boom = require('boom');
 const Promise = require('bluebird');
 
-module.exports = (app) => {
-  const QueryUtils = app.coincidents.Utils.queryUtils;
-  const Championship = app.src.models.championshipModel;
+const Championship = require('../../models/championshipModel')
+const QueryUtils = require('iguess-api-coincidents').Utils.queryUtils
 
-  const getChampionshipById = (payload) => {
-    const searchQuery = {
-      _id: payload.championshipId
-    }
-
-    return Championship.findOne(searchQuery)
-      .then((championship) => QueryUtils.makeObject(championship))
+const getChampionshipById = (payload) => {
+  const searchQuery = {
+    _id: payload.championshipId
   }
 
-  return {
-    getChampionshipById
-  }
+  return Championship.findOne(searchQuery)
+    .then((championship) => QueryUtils.makeObject(championship))
 }
+module.exports = getChampionshipById

@@ -1,15 +1,13 @@
 'use strict'
 
-module.exports = (app) => {
-  const getLastRoundRepository = app.src.repositories.fixtures.getLastRoundRepository
+const selectLanguage = require('iguess-api-coincidents').Translate.gate.selectLanguage
 
-  const getLastRound = (payload, headers) => {
-    const dictionary = app.coincidents.Translate.gate.selectLanguage(headers.language)
+const getLastRoundRepository = require('../../repositories/fixtures/getLastRoundRepository')
 
-    return getLastRoundRepository.getLastRound(payload, dictionary)
-  }
+const getLastRound = (payload, headers) => {
+  const dictionary = selectLanguage(headers.language)
 
-  return {
-    getLastRound
-  }
+  return getLastRoundRepository(payload, dictionary)
 }
+
+module.exports = getLastRound

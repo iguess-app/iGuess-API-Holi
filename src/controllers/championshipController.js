@@ -1,31 +1,29 @@
-'use Strict'
+'use strict'
 
-module.exports = (app) => {
-  const championshipService = app.src.services.championship.getChampionshipByLeagueService
-  const getChampionshipByIdService = app.src.services.championship.getChampionshipByIdService
-  const getAllchampionshipService = app.src.services.championship.getAllchampionshipService
+const getAllchampionshipService = require('../services/championship/getAllchampionshipService')
+const getChampionshipByIdService = require('../services/championship/getChampionshipByIdService')
+const getChampionshipByLeagueService = require('../services/championship/getChampionshipByLeagueService')
 
-  const getChampionshipByLeague = (request, reply) => {
-    championshipService.getChampionshipByLeague(request.query, request.headers)
-      .then((championships) => reply(championships))
-      .catch((err) => reply(err))
-  }
+const getChampionshipByLeague = (request, reply) => {
+  getChampionshipByLeagueService(request.query, request.headers)
+    .then((championships) => reply(championships))
+    .catch((err) => reply(err))
+}
 
-  const getChampionshipById = (request, reply) => {
-    getChampionshipByIdService.getChampionshipById(request.query, request.headers)
-      .then((championship) => reply(championship))
-      .catch((err) => reply(err))
-  }
+const getChampionshipById = (request, reply) => {
+  getChampionshipByIdService(request.query, request.headers)
+    .then((championship) => reply(championship))
+    .catch((err) => reply(err))
+}
 
-  const getAllchampionship = (request, reply) => {
-    getAllchampionshipService.getAllchampionship(request.query, request.headers)
-      .then((championship) => reply(championship))
-      .catch((err) => reply(err))
-  }
+const getAllchampionship = (request, reply) => {
+  getAllchampionshipService(request.query, request.headers)
+    .then((championship) => reply(championship))
+    .catch((err) => reply(err))
+}
 
-  return {
-    getChampionshipByLeague,
-    getChampionshipById,
-    getAllchampionship
-  }
+module.exports = {
+  getChampionshipByLeague,
+  getChampionshipById,
+  getAllchampionship
 }

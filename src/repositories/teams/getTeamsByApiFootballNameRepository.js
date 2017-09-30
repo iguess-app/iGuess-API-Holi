@@ -1,32 +1,21 @@
 'use strict'
 
-const fs = require('fs')
 const Boom = require('boom')
 
-const coincidents = require('iguess-api-coincidents')
-const requestManager = coincidents.Managers.requestManager
-const apis = coincidents.Config.apis
+const Teams = require('../../models/teamModel')
 
-module.exports = (app) => {
-  const Teams = app.src.models.teamModel
+const getTeams = (apiFootballName) => {
 
-  const getTeams = (apiFootballName) => {
-
-    const searchQuery = {
-      apiFootballName
-    }
-
-    return Teams.findOne(searchQuery)
-      .then((team) => {
-        _checkErrors(team, apiFootballName)
-
-        return team.toJSON()
-      })
+  const searchQuery = {
+    apiFootballName
   }
 
-  return {
-    getTeams
-  }
+  return Teams.findOne(searchQuery)
+    .then((team) => {
+      _checkErrors(team, apiFootballName)
+
+      return team.toJSON()
+    })
 }
 
 const _checkErrors = (team, apiFootballName) => {
@@ -34,3 +23,5 @@ const _checkErrors = (team, apiFootballName) => {
     throw Boom.notImplemented(`Team not found ${apiFootballName}`)
   }
 }
+
+module.exports = getTeams

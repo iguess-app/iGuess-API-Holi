@@ -1,27 +1,28 @@
-'use strict';
+'use strict'
 
-const Joi = require('joi');
+const Joi = require('joi')
 
-module.exports = (app) => {
-  const teamController = app.src.controllers.teamController;
-  const server = app.configServer;
+const server = require('../../configServer')
+const defaultHeaderSchema = require('./schemas/defaultHeaderSchema')
+const teamController = require('../controllers/teamController')
 
-  server.route({
-    path: '/team/teamsbyleague',
-    method: 'GET',
-    config: {
-      handler: (request, reply) => {
+server.route({
+  path: '/team/teamsbyleague',
+  method: 'GET',
+  config: {
+    handler: (request, reply) => {
 
-        teamController.getTeams(request, reply)
-      },
-      validate: {
-        query: Joi.object({ 
-          countryinitials: Joi.string().required(),
-          serie: Joi.number().required()
-        })
-      },
-      response: {
-        schema: Joi.object({
+      teamController.getTeams(request, reply)
+    },
+    validate: {
+      query: Joi.object({
+        countryinitials: Joi.string().required(),
+        serie: Joi.number().required()
+      }),
+      headers: defaultHeaderSchema
+    },
+    response: {
+      schema: Joi.object({
           country: Joi.string().required(),
           countryInitials: Joi.string().required(),
           name: Joi.string().required(),
@@ -34,9 +35,9 @@ module.exports = (app) => {
               league: Joi.string()
             }).unknown())
         }).unknown()
-        .meta({ className: 'Response' })
-      }
+        .meta({
+          className: 'Response'
+        })
     }
-  })
-
-};
+  }
+})

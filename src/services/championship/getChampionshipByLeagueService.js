@@ -1,13 +1,13 @@
 'use strict'
 
-const Promise = require('bluebird');
+const selectLanguage = require('iguess-api-coincidents').Translate.gate.selectLanguage
 
-module.exports = (app) => {
-  const getChampionshipByLeagueRepository = app.src.repositories.championship.getChampionshipByLeagueRepository
+const getChampionshipByLeagueRepository = require('../../repositories/championship/getChampionshipByLeagueRepository')
 
-  const getChampionshipByLeague = (payload) => getChampionshipByLeagueRepository.getChampionshipByLeague(payload)
+const getChampionshipByLeague = (payload, headers) => {
+  const dictionary = selectLanguage(headers.language)
 
-  return {
-    getChampionshipByLeague
-  }
-};
+  return getChampionshipByLeagueRepository(payload, dictionary)
+}
+
+module.exports = getChampionshipByLeague

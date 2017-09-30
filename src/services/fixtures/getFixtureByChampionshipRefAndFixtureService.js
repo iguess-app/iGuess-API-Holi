@@ -1,15 +1,13 @@
 'use strict'
 
-module.exports = (app) => {
-  const getFixtureByChampionshipRefAndFixtureRepository = app.src.repositories.fixtures.getFixtureByChampionshipRefAndFixtureRepository
+const selectLanguage = require('iguess-api-coincidents').Translate.gate.selectLanguage
 
-  const getFixtureByChampionshipRefAndFixture = (payload, headers) => {
-    const dictionary = app.coincidents.Translate.gate.selectLanguage(headers.language)
+const getFixtureByChampionshipRefAndFixtureRepository = require('../../repositories/fixtures/getFixtureByChampionshipRefAndFixtureRepository')
 
-    return getFixtureByChampionshipRefAndFixtureRepository.getFixtureByChampionshipRefAndFixture(payload, dictionary)
-  }
+const getFixtureByChampionshipRefAndFixture = (payload, headers) => {
+  const dictionary = selectLanguage(headers.language)
 
-  return {
-    getFixtureByChampionshipRefAndFixture
-  }
-};
+  return getFixtureByChampionshipRefAndFixtureRepository(payload, dictionary)
+}
+
+module.exports = getFixtureByChampionshipRefAndFixture

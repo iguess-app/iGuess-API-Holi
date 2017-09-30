@@ -9,12 +9,12 @@ const requestManager = coincidents.Managers.requestManager
 const apis = coincidents.Config.apis
 
 const getEvents = (reqBody, headers) => {
-  const uri = `http://apifootball.com/api/`
+  const uri = `http://apifootball.com/api/`//put at config file
 
   const obj = {
     action: action.getEvents,
     APIkey: '6f60688e08d2657cb247eaa636b1604425ddd76ee4bacfd007f909442ea06404', //put at config file
-    league_id: championship.brazilianChampionship,
+    league_id: championship.brazilianChampionship, //do dinamically
     from: reqBody.dateFrom,
     to: reqBody.dateTo
   }
