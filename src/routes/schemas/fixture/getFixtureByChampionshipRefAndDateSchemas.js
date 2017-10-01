@@ -3,7 +3,6 @@
 const Joi = require('joi')
 const Config = require('iguess-api-coincidents').Config
 
-const fixtureSchema = require('../fixture/fixtureSchema')
 const teamEmbeddedSchema = require('../team/teamEmbeddedSchema')
 
 const ID_SIZE = Config.mongo.idStringSize
