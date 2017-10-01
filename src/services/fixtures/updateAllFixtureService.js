@@ -1,13 +1,12 @@
 'use strict'
 
-const Promise = require('bluebird')
 const moment = require('moment')
 const selectLanguage = require('iguess-api-coincidents').Translate.gate.selectLanguage
 
-const getTeamsByApiFootballNameRepository = require('../../repositories/teams/getTeamsByApiFootballNameRepository')
 const insertNewMatchDayAtRoundsRepository = require('../../repositories/fixtures/insertNewMatchDayAtRoundsRepository')
 const getEventsRepository = require('../../repositories/apiFootball/getEventsRepository')
 const apiFootballGetEventsParser = require('../../parsers/apiFootballGetEventsParser')
+const getAllTeamsObj = require('./sharedFunctions/getAllTeamsObjFunction')
 
 const insertAllMatches = (payload, headers) => {
   const dictionary = selectLanguage(headers.language)
@@ -17,7 +16,7 @@ const insertAllMatches = (payload, headers) => {
   payload.championshipRef = '5872a8d2ed1b02314e088291'
 
   return getEventsRepository(payload, dictionary, headers)
-    .then((matchPerDay) => _getAllTeamsObj(matchPerDay))
+    .then((matchPerDay) => getAllTeamsObj(matchPerDay))
     .then((matchesEvents) => apiFootballGetEventsParser(matchesEvents))
     .then((matchesEvents) => _setMatchesPerDay(matchesEvents))
     .then((matchesEvents) => _buildNewRoundsObj(payload, dictionary, matchesEvents))
@@ -44,31 +43,6 @@ const _setMatchesPerDay = (matchesEvents) => {
   }, [])
 
   return matchPerDayArray
-}
-
-const _getAllTeamsObj = (matchesEvents) => {
-
-  const matchesEventsWithTeamsObj = matchesEvents.map((match) => {
-    const getTeamsPromiseArray = Promise.all([
-      getTeamsByApiFootballNameRepository(match.match_hometeam_name),
-      getTeamsByApiFootballNameRepository(match.match_awayteam_name),
-      match
-    ])
-
-    return getTeamsPromiseArray
-  })
-
-  return Promise.map(matchesEventsWithTeamsObj, (team) => {
-    const homeTeamObj = team[0]
-    const awayTeamObj = team[1]
-    const matchObj = team[2]
-    homeTeamObj.teamRef = homeTeamObj._id
-    awayTeamObj.teamRef = awayTeamObj._id
-    matchObj.homeTeamObj = homeTeamObj
-    matchObj.awayTeamObj = awayTeamObj
-
-    return matchObj
-  })
 }
 
 const _buildNewRoundsObj = (payload, dictionary, matchesEvents) => {
