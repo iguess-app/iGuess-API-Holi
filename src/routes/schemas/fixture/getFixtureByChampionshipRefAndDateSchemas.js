@@ -9,18 +9,17 @@ const teamEmbeddedSchema = require('../team/teamEmbeddedSchema')
 const ID_SIZE = Config.mongo.idStringSize
 
 const request = Joi.object({
-  fixture: fixtureSchema,
+  date: Joi.date().required(),
   championshipRef: Joi.string().length(ID_SIZE).required()
 })
 
 const response = {
   schema: Joi.object({
-      fixture: fixtureSchema,
+      unixDate: Joi.date().required(),
+      date: Joi.date().required(),
       championshipRef: Joi.string().length(ID_SIZE).required(),
-      ended: Joi.bool().required(),
-      started: Joi.bool().required(),
       games: Joi.array().items(Joi.object({
-        stadium: Joi.string().required(),
+        stadium: Joi.string(),
         homeTeam: teamEmbeddedSchema.unknown().required(),
         awayTeam: teamEmbeddedSchema.unknown().required(),
         homeTeamScore: Joi.number(),

@@ -1,13 +1,14 @@
 'use strict'
 
 const Boom = require('boom')
+const moment = require('moment')
 
 const Round = require('../../models/roundModel')
 
-const getFixtureByChampionshipRefAndFixture = (payload, dictionary) => {
+const getFixtureByChampionshipRefAndDate = (payload, dictionary) => {
   const searchQuery = {
     championshipRef: payload.championshipRef,
-    fixture: payload.fixture
+    unixDate: moment(payload.date).format('X')
   }
 
   return Round.findOne(searchQuery)
@@ -24,4 +25,4 @@ const _checkErrors = (roundFound, dictionary) => {
   }
 }
 
-module.exports = getFixtureByChampionshipRefAndFixture
+module.exports = getFixtureByChampionshipRefAndDate

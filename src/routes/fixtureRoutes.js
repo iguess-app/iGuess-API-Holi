@@ -6,17 +6,17 @@ const defaultHeaderSchema = require('./schemas/defaultHeaderSchema')
 const fixtureController = require('../controllers/fixtureController')
 
 server.route({
-  path: '/fixture/getFixtureByChampionshipRefAndFixture',
+  path: '/fixture/getFixtureByChampionshipRefAndDate',
   method: 'GET',
   config: {
     handler: (request, reply) => {
-      fixtureController.getFixtureByChampionshipRefAndFixture(request, reply)
+      fixtureController.getFixtureByChampionshipRefAndDate(request, reply)
     },
     validate: {
-      query: schemas.getFixtureByChampionshipRefAndFixtureSchemas.request,
+      query: schemas.getFixtureByChampionshipRefAndDateSchemas.request,
       headers: defaultHeaderSchema
     },
-    response: schemas.getFixtureByChampionshipRefAndFixtureSchemas.response
+    response: schemas.getFixtureByChampionshipRefAndDateSchemas.response
   }
 })
 

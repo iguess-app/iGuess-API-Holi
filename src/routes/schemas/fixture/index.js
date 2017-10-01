@@ -1,9 +1,9 @@
 'use strict'
 
-const getFixtureByChampionshipRefAndFixtureSchemas = require('./getFixtureByChampionshipRefAndFixtureSchemas')
+const getFixtureByChampionshipRefAndDateSchemas = require('./getFixtureByChampionshipRefAndDateSchemas')
 const getLastRoundSchema = require('./getLastRoundSchema')
 
 module.exports = {
-  getFixtureByChampionshipRefAndFixtureSchemas,
+  getFixtureByChampionshipRefAndDateSchemas,
   getLastRoundSchema
 }

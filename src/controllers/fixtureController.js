@@ -1,11 +1,11 @@
 'use strict'
 
-const getFixtureByChampionshipRefAndFixtureService = require('../services/fixtures/getFixtureByChampionshipRefAndFixtureService')
+const getFixtureByChampionshipRefAndDateService = require('../services/fixtures/getFixtureByChampionshipRefAndDateService')
 const getLastRoundService = require('../services/fixtures/getLastRoundService')
 const updateAllFixtureService = require('../services/fixtures/updateAllFixtureService')
 
-const getFixtureByChampionshipRefAndFixture = (request, reply) => {
-  getFixtureByChampionshipRefAndFixtureService(request.query, request.headers)
+const getFixtureByChampionshipRefAndDate = (request, reply) => {
+  getFixtureByChampionshipRefAndDateService(request.query, request.headers)
     .then((teams) => reply(teams))
     .catch((err) => reply(err))
 }
@@ -23,7 +23,7 @@ const getEvents = (request, reply) => {
 }
 
 module.exports = {
-  getFixtureByChampionshipRefAndFixture,
+  getFixtureByChampionshipRefAndDate,
   getLastRound,
   getEvents
 }
