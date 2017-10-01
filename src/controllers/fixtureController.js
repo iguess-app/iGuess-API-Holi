@@ -2,7 +2,7 @@
 
 const getFixtureByChampionshipRefAndFixtureService = require('../services/fixtures/getFixtureByChampionshipRefAndFixtureService')
 const getLastRoundService = require('../services/fixtures/getLastRoundService')
-const updateFixtureService = require('../services/fixtures/updateFixtureService')
+const updateAllFixtureService = require('../services/fixtures/updateAllFixtureService')
 
 const getFixtureByChampionshipRefAndFixture = (request, reply) => {
   getFixtureByChampionshipRefAndFixtureService(request.query, request.headers)
@@ -17,7 +17,7 @@ const getLastRound = (request, reply) => {
 }
 
 const getEvents = (request, reply) => {
-  updateFixtureService(request.query, request.headers)
+  updateAllFixtureService(request.query, request.headers)
   .then((round) => reply(round))
   .catch((err) => reply(err))
 }

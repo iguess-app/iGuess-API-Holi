@@ -1,6 +1,7 @@
 'use strict'
 
 const Boom = require('boom')
+const log = require('iguess-api-coincidents').Managers.logManager
 
 const Teams = require('../../models/teamModel')
 
@@ -20,7 +21,9 @@ const getTeams = (apiFootballName) => {
 
 const _checkErrors = (team, apiFootballName) => {
   if (!team) {
-    throw Boom.notImplemented(`Team not found ${apiFootballName}`)
+    log.error(`Team not found ${apiFootballName}`)
+    
+    return Boom.notImplemented(`Team not found ${apiFootballName}`)
   }
 }
 

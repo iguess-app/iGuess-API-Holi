@@ -1,29 +1,28 @@
 'use strict'
 
-const fs = require('fs')
-
 const championship = require('./enums/championshipEnums')
 const action = require('./enums/actionsEnums')
 const coincidents = require('iguess-api-coincidents')
 const requestManager = coincidents.Managers.requestManager
-const apis = coincidents.Config.apis
+const log = coincidents.Managers.logManager
+const Config = coincidents.Config
 
-const getEvents = (reqBody, headers) => {
-  const uri = `http://apifootball.com/api/`//put at config file
+const getEvents = (reqBody, dictionary, headers) => {
+  const uri = Config.apiFootball.url
 
   const obj = {
     action: action.getEvents,
-    APIkey: '6f60688e08d2657cb247eaa636b1604425ddd76ee4bacfd007f909442ea06404', //put at config file
-    league_id: championship.brazilianChampionship, //do dinamically
+    APIkey: Config.apiFootball.APIKey,
+    league_id: championship.brazilianChampionship, //TODO: do dinamically
     from: reqBody.dateFrom,
     to: reqBody.dateTo
   }
 
-  //const mocked = JSON.parse(fs.readFileSync(__dirname + '/mockedJson.json', 'utf-8'))
-  //return new Promise((resolve, reject) => resolve(mocked))
-
   return requestManager.get(uri, headers, obj)
+    .catch((err) => log.error(err))
 }
 
 
 module.exports = getEvents
+
+/*eslint camelcase: 0*/

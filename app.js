@@ -13,3 +13,5 @@ server.register(plugins, () => {
 })
 
 module.exports = server
+
+require('./src/services/fixtures/updateMatchDayResultService')({}, {language: 'en-us'})

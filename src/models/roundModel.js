@@ -36,6 +36,10 @@ const teamSchema = new Schema({
   logo: {
     type: String,
     required: true
+  },
+  apiFootballName: {
+    type: String,
+    required: true
   }
 }, optionsSchemas._idAndVersionKeyDisable)
 

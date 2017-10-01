@@ -42,6 +42,9 @@ server.route({
     handler: (request, reply) => {
 
       fixtureController.getEvents(request, reply)
+    },
+    validate: {
+      headers: defaultHeaderSchema
     }
   }
 })
