@@ -5,6 +5,7 @@ const Boom = require('boom')
 const championship = require('./enums/championshipEnums')
 const action = require('./enums/actionsEnums')
 const coincidents = require('iguess-api-coincidents')
+
 const requestManager = coincidents.Managers.requestManager
 const log = coincidents.Managers.logManager
 const Config = coincidents.Config
@@ -33,6 +34,8 @@ const _checkErrors = (response) => {
   if (response.error) {
     throw Boom.create(response.error, response.message)
   }
+
+  return response
 }
 
 /*API Football call 'Sport Recife' and 'Sport' like different teams, and thats wrong,

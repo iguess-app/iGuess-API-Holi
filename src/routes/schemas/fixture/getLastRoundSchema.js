@@ -3,7 +3,6 @@
 const Joi = require('joi')
 const Config = require('iguess-api-coincidents').Config
 
-const fixtureSchema = require('../fixture/fixtureSchema')
 const teamEmbeddedSchema = require('../team/teamEmbeddedSchema')
 
 const ID_SIZE = Config.mongo.idStringSize
@@ -15,7 +14,6 @@ const getLastRoundRequest = Joi.object({
 
 const getLastRoundResponse = {
   schema: Joi.object({
-      fixture: fixtureSchema,
       championshipRef: Joi.string().length(ID_SIZE).required(),
       ended: Joi.bool().required(),
       started: Joi.bool().required(),

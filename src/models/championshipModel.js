@@ -6,19 +6,10 @@ const coincidents = require('iguess-api-coincidents')
 const db = coincidents.Managers.mongoManager
 const mongo = coincidents.Config.mongo
 const serverErrors = coincidents.Utils.errorUtils.serverErrors
-const userErrors = coincidents.Utils.errorUtils.userErrors
 
 const Schema = mongoose.Schema
-const Mixed = Schema.Types.Mixed
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
-const validateFixture = require('./subValidations/fixture')
-
-const fixtureName = {
-  type: Mixed,
-  required: true,
-  validate: [validateFixture, String(userErrors.notValidFixture)]
-}
 
 const championshipSchema = new Schema({
   league: {
@@ -36,10 +27,6 @@ const championshipSchema = new Schema({
   },
   championshipActive: {
     type: Boolean,
-    required: true
-  },
-  fixturesNames: {
-    type: [fixtureName],
     required: true
   }
 }, optionsSchemas.versionKeyDisable)

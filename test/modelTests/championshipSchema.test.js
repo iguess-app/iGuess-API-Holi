@@ -12,13 +12,7 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'league': '5872467bed1b02314e08828a',
       'season': '2017',
       'championship': 'Campeonato Brasileiro',
-      'championshipActive': true,
-      'fixturesNames': [
-        1,
-        2,
-        3,
-        4
-      ]
+      'championshipActive': true
     })
     campBR.validate((err) => {
       expect(err).to.equal(null)
@@ -31,17 +25,7 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'league': '5872467bed1b02314e088',
       'season': '2017',
       'championship': 'Copa do Brasil',
-      'championshipActive': false,
-      'fixturesNames': [
-        '1st round',
-        '2nd round',
-        '3rd round',
-        '4th round',
-        '8th-finals',
-        'Quarterfinals',
-        'SemiFinals',
-        'Final'
-      ]
+      'championshipActive': false
     })
     campBR.validate((err) => {
       expect(err.errors.league).to.exists()
@@ -52,13 +36,7 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
   lab.test('ChampionshipSchema without Season', (done) => {
     const campBR = new Championship({
       'league': '5872467bed1b02314e0882',
-      'championship': 'Campeonato Brasileiro',
-      'fixturesNames': [
-        1,
-        2,
-        3,
-        4
-      ]
+      'championship': 'Campeonato Brasileiro'
     })
     campBR.validate((err) => {
       expect(err.errors.season).to.exists()
@@ -77,7 +55,6 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
     campBR.validate((err) => {
       expect(err.errors.championship).to.exists()
       expect(err.errors.championship.message).to.be.equal('Path `championship` is required.')
-      expect(err.errors.fixturesNames.message).to.be.equal('Path `fixturesNames` is required.')
       done()
     })
   })

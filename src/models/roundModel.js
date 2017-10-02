@@ -4,15 +4,11 @@ const mongoose = require('mongoose')
 const coincidents = require('iguess-api-coincidents')
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
-const validateFixture = require('./subValidations/fixture')
 
 const Schema = mongoose.Schema
-const Mixed = Schema.Types.Mixed
 const db = coincidents.Managers.mongoManager
 const mongo = coincidents.Config.mongo
 const serverErrors = coincidents.Utils.errorUtils.serverErrors
-const userErrors = coincidents.Utils.errorUtils.userErrors
-
 
 const teamSchema = new Schema({
   teamRef: {
