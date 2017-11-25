@@ -10,4 +10,4 @@ const _startMatchDayResultWorker = () => {
   updateMatchDayResultService({}, {language: 'en-us'})
 }
 
-setInterval(_startMatchDayResultWorker, ONE_HOUR)
+setInterval(_startMatchDayResultWorker, SEVEN_SECONDS)

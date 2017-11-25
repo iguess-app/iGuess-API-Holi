@@ -2,11 +2,11 @@
 
 const updateAllFixtureService = require('../../services/fixtures/updateAllFixtureService')
 
-const SEVEN_SECONDS = 7000
-const ONE_HOUR = 1000 * 60 * 60
+const ONE_SECOND = 1000
+const FOUR_HOURS = ONE_SECOND * 60 * 60 * 4
 
 const _startWorker = () => {
   updateAllFixtureService({}, {language: 'en-us'})
 }
 
-setInterval(_startWorker, SEVEN_SECONDS)
+setInterval(_startWorker, FOUR_HOURS)
