@@ -2,8 +2,7 @@ const Lab = require('lab')
 const lab = exports.lab = Lab.script()
 const expect = Lab.expect
 
-const app = require('../../app')
-const Championship = app.src.models.championshipModel
+const Championship = require('../../src/models/championshipModel')
 
 lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
 

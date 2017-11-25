@@ -3,8 +3,7 @@ const Lab = require('lab')
 const lab = exports.lab = Lab.script()
 const expect = Lab.expect
 
-const app = require('../../app')
-const League = app.src.models.leagueModel
+const League = require('../../src/models/leagueModel')
 
 const guessLinesSchemas = JSON.parse(fs.readFileSync('test/modelTests/SchemaFiles/leagueSchemasFile.json'))
 

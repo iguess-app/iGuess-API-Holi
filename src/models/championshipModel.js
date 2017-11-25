@@ -1,15 +1,14 @@
 'use strict'
 
 const mongoose = require('mongoose')
-
 const coincidents = require('iguess-api-coincidents')
-const db = coincidents.Managers.mongoManager
-const mongo = coincidents.Config.mongo
-const serverErrors = coincidents.Utils.errorUtils.serverErrors
-
-const Schema = mongoose.Schema
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
+
+const db = coincidents.Managers.mongoManager()
+const mongo = coincidents.Config.mongo
+const serverErrors = coincidents.Utils.errorUtils.serverErrors
+const Schema = mongoose.Schema
 
 const championshipSchema = new Schema({
   league: {

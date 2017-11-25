@@ -1,13 +1,16 @@
+'use strict'
+
 const fs = require('fs')
 const Lab = require('lab')
+const coincidents = require('iguess-api-coincidents')
+
+const Round = require('../../src/models/roundModel')
+const roundSchemas = JSON.parse(fs.readFileSync('test/modelTests/SchemaFiles/roundSchemasFile.json'))
+
+const serverErrors = coincidents.Utils.errorUtils.serverErrors
 const lab = exports.lab = Lab.script()
 const expect = Lab.expect
 
-const app = require('../../app')
-const Round = app.src.models.roundModel
-const serverErrors = app.coincidents.Utils.errorUtils.serverErrors
-
-const roundSchemas = JSON.parse(fs.readFileSync('test/modelTests/SchemaFiles/roundSchemasFile.json'))
 
 lab.experiment('Model Test ==> RoundSchema Validator', () => {
 

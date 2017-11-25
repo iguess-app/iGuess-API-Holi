@@ -161,7 +161,6 @@ module.exports = {
     "no-useless-return": "error",
     "no-var": "error",
     "no-void": "error",
-    "no-warning-comments": "error",
     "no-whitespace-before-property": "error",
     "no-with": "error",
     "object-shorthand": "error",

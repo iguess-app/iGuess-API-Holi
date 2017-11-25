@@ -1,10 +1,13 @@
+'use strict'
+
 const Lab = require('lab')
+const coincidents = require('iguess-api-coincidents')
+
+const Team = require('../../src/models/teamModel')
+
 const lab = exports.lab = Lab.script()
 const expect = Lab.expect
-
-const app = require('../../app')
-const Team = app.src.models.teamModel
-const serverErrors = app.coincidents.Utils.errorUtils.serverErrors
+const serverErrors = coincidents.Utils.errorUtils.serverErrors
 
 lab.experiment('Model Test ==> TeamSchema Validator', () => {
 
