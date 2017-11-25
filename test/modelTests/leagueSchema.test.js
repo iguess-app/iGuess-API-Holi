@@ -1,4 +1,5 @@
-const fs = require('fs')
+'use strict'
+
 const Lab = require('lab')
 const lab = exports.lab = Lab.script()
 const expect = Lab.expect

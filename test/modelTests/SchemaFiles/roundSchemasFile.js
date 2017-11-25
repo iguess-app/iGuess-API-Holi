@@ -2,88 +2,106 @@
 
 const correctSchema = {
   'championshipRef': '5872a8d2ed1b02314e088291',
-  'ended': false,
-  'started': false,
+  'date': '2017-06-15T03:00:00.000Z',
+  'unixDate': 1497495600,
   'games': [{
-      '_id': '5872467bed1b02314e08828b',
+      'initTime': '2017-06-15T19:00:00.000Z',
       'homeTeam': {
-        'teamRef': '5872a51a4db3fb378bc7ee15',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Clube Atlético Mineiro',
-        'shortName': 'Atlético-MG',
-        'logo': 'nothing =('
+        'fullName': 'Coritiba Foot Ball Club',
+        'shortName': 'Coritiba',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Coritiba',
+        'teamRef': '5872a51a4db3fb378bc7ee1b'
       },
       'awayTeam': {
-        'teamRef': '5872a1d1ed1b02314e08828f',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Clube Atlético Paranaense',
-        'shortName': 'Atlético-PR',
-        'logo': 'nothing =('
+        'fullName': 'Esporte Clube Bahia',
+        'shortName': 'Bahia',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Bahia',
+        'teamRef': '5872a51a4db3fb378bc7ee17'
       },
-      'initTime': '2017-06-06T02:22:51.000Z',
-      'stadium': 'INDEPENDÊNCIA'
+      'homeTeamScore': 0,
+      'awayTeamScore': 0,
+      '_id': '59d1475c70dc031ae0973e39',
+      'ended': true
     },
     {
-      '_id': '5872467bed1b02314e08828b',
+      'initTime': '2017-06-16T00:00:00.000Z',
       'homeTeam': {
-        'teamRef': '5872a51a4db3fb378bc7ee21',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Sport Club do Recife',
-        'shortName': 'Sport',
-        'logo': 'nothing =('
+        'fullName': 'Fluminense Football Club',
+        'shortName': 'Fluminense',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Fluminense',
+        'teamRef': '5872a51a4db3fb378bc7ee1e'
       },
       'awayTeam': {
-        'teamRef': '587241f6ed1b02314e088288',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'São Paulo Futebol Clube',
-        'shortName': 'São Paulo',
-        'logo': 'nothing =('
+        'fullName': 'Grêmio Foot-Ball Porto Alegrense',
+        'shortName': 'Grêmio',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Gremio',
+        'teamRef': '5872a51a4db3fb378bc7ee1f'
       },
-      'initTime': '2017-06-06T02:22:51.000Z',
-      'stadium': 'ILHA DO RETIRO'
+      'homeTeamScore': 0,
+      'awayTeamScore': 2,
+      '_id': '59d1475c70dc031ae0973e38',
+      'ended': false
     }
   ]
 }
 
 const someErrorsSchema = {
-  'championshipRef': 'notObjectID',
+  'championshipRef': '5872a8d2ed1b02314e088291',
+  'date': 'NOT A VALID DATE',
+  'unixDate': 'NOT A NUMBER',
   'games': [{
-      '_id': 'notObjectID',
+      'initTime': 'NOT A VALID DATE',
       'homeTeam': {
-        'teamRef': '5872a51a4db3fb378bc7ee15',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Clube Atlético Mineiro',
-        'shortName': 'Atlético-MG',
-        'logo': 'nothing =('
+        'fullName': 'Coritiba Foot Ball Club',
+        'shortName': 'Coritiba',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Coritiba',
+        'teamRef': '5872a51a4db3fb378bc7ee1b'
       },
       'awayTeam': {
-        'teamRef': '5872a1d1ed1b02314e08828f',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Clube Atlético Paranaense',
-        'shortName': 'Atlético-PR',
-        'logo': 'nothing =('
+        'fullName': 'Esporte Clube Bahia',
+        'shortName': 'Bahia',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Bahia',
+        'teamRef': '5872a51a4db3fb378bc7ee17'
       },
-      'initTime': '21/11/2011',
-      'stadium': null
+      'homeTeamScore': 0,
+      'awayTeamScore': 0,
+      '_id': '59d1475c70dc031ae0973e39',
+      'ended': true
     },
     {
-      '_id': '5872467bed1b02314e08828b',
+      'initTime': '2017-06-16T00:00:00.000Z',
       'homeTeam': {
-        'teamRef': '5872a51a4db3fb378bc7ee21',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'Sport Club do Recife',
-        'shortName': 'Sport',
-        'logo': 'nothing =('
+        'fullName': 'Fluminense Football Club',
+        'shortName': 'Fluminense',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Fluminense',
+        'teamRef': '5872a51a4db3fb378bc7ee1e'
       },
       'awayTeam': {
-        'teamRef': '587241f6ed1b02314e088288',
         'league': '5872467bed1b02314e08828a',
-        'fullName': 'São Paulo Futebol Clube',
-        'shortName': 'São Paulo',
-        'logo': 'nothing =('
+        'fullName': 'Grêmio Foot-Ball Porto Alegrense',
+        'shortName': 'Grêmio',
+        'logo': 'nothing =(',
+        'apiFootballName': 'Gremio',
+        'teamRef': '5872a51a4db3fb378bc7ee1f'
       },
-      'initTime': '2017-06-06T02:22:51.000Z',
-      'stadium': 'ILHA DO RETIRO'
+      'homeTeamScore': 0,
+      'awayTeamScore': 2,
+      '_id': '59d1475c70dc031ae0973e38',
+      'ended': true
     }
   ]
 }
