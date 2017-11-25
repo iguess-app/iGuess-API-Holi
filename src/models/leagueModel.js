@@ -1,12 +1,11 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const coincidents = require('iguess-api-coincidents')
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
+const db = require('./connect')
 
 const Schema = mongoose.Schema
-const db = coincidents.Managers.mongoManager()
 
 const leagueSchema = new Schema({
   country: {
