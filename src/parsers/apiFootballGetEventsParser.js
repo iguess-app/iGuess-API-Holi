@@ -3,7 +3,7 @@
 const moment = require('moment')
 const momentTimezone = require('moment-timezone')
 
-const TIMEZONE_DIFF_FROM_API_FOOTBALL = 5
+const TIMEZONE_DIFF_FROM_API_FOOTBALL = 3
 
 //TODO: Ao inves de dar subtract 5 horas, da um parse timezone brasilia ou SP
 
