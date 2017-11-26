@@ -19,6 +19,17 @@ const insertNewMatchDayAtRoundsRepository = (newRounds, dictionary) =>
             log.error(err)
           })
       }
+
+      roundFound.games.map((game) => {
+        newRoundDay.games.forEach((gameCOMPARE) => {
+          if (gameCOMPARE.homeTeam.shortName === game.homeTeam.shortName) {
+            game.initTime = gameCOMPARE.initTime
+          }
+        })
+
+        return game
+      })
+      roundFound.save()
       log.info(`Round already setted (championshipRef: ${newRoundDay.championshipRef}, day: ${newRoundDay.date})`)
     })
   )
