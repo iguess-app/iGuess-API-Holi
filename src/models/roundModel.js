@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const coincidents = require('iguess-api-coincidents')
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
+const logoSchema = require('./subValidations/logo')
 const db = require('./connect')
 
 const Schema = mongoose.Schema
@@ -30,8 +31,8 @@ const teamSchema = new Schema({
     required: true
   },
   logo: {
-    type: String,
-    default: ''
+    type: logoSchema,
+    required: true
   },
   apiFootballName: {
     type: String,

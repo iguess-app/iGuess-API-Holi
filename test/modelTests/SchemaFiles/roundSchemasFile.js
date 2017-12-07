@@ -10,7 +10,11 @@ const correctSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Coritiba Foot Ball Club',
         'shortName': 'Coritiba',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Coritiba',
         'teamRef': '5872a51a4db3fb378bc7ee1b'
       },
@@ -18,7 +22,11 @@ const correctSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Esporte Clube Bahia',
         'shortName': 'Bahia',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Bahia',
         'teamRef': '5872a51a4db3fb378bc7ee17'
       },
@@ -33,7 +41,11 @@ const correctSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Fluminense Football Club',
         'shortName': 'Fluminense',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Fluminense',
         'teamRef': '5872a51a4db3fb378bc7ee1e'
       },
@@ -41,7 +53,11 @@ const correctSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Grêmio Foot-Ball Porto Alegrense',
         'shortName': 'Grêmio',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Gremio',
         'teamRef': '5872a51a4db3fb378bc7ee1f'
       },
@@ -63,7 +79,11 @@ const someErrorsSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Coritiba Foot Ball Club',
         'shortName': 'Coritiba',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Coritiba',
         'teamRef': '5872a51a4db3fb378bc7ee1b'
       },
@@ -71,7 +91,11 @@ const someErrorsSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Esporte Clube Bahia',
         'shortName': 'Bahia',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Bahia',
         'teamRef': '5872a51a4db3fb378bc7ee17'
       },
@@ -86,7 +110,11 @@ const someErrorsSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Fluminense Football Club',
         'shortName': 'Fluminense',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Fluminense',
         'teamRef': '5872a51a4db3fb378bc7ee1e'
       },
@@ -94,7 +122,11 @@ const someErrorsSchema = {
         'league': '5872467bed1b02314e08828a',
         'fullName': 'Grêmio Foot-Ball Porto Alegrense',
         'shortName': 'Grêmio',
-        'logo': 'nothing =(',
+        'logo': {
+          'mini': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'small': 'https://storage.googleapis.com/iguess-static-files/conmebol......',
+          'normal': 'https://storage.googleapis.com/iguess-static-files/conmebol......'
+        },
         'apiFootballName': 'Gremio',
         'teamRef': '5872a51a4db3fb378bc7ee1f'
       },
