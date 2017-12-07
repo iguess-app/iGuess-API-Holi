@@ -16,7 +16,11 @@ lab.experiment('Model Test ==> TeamSchema Validator', () => {
       'league': '5872467bed1b02314e08828a',
       'fullName': 'Avaí Futebol Clube',
       'shortName': 'Avai',
-      'logo': 'Link'
+      'logo': {
+        'mini': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_mini/real_madrid.png',
+        'small': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_small/real_madrid.png',
+        'normal': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_normal/real_madrid.png'
+      }
     })
     avai.validate((err) => {
       expect(err).to.equal(null);
@@ -28,7 +32,11 @@ lab.experiment('Model Test ==> TeamSchema Validator', () => {
     const avai = new Team({
       'league': '5872467bed1b02314e08828a',
       'shortName': 'Avai',
-      'logo': 'Link'
+      'logo': {
+        'mini': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_mini/real_madrid.png',
+        'small': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_small/real_madrid.png',
+        'normal': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_normal/real_madrid.png'
+      }
     })
     avai.validate((err) => {
       expect(err.errors.fullName).to.exists();
@@ -41,7 +49,11 @@ lab.experiment('Model Test ==> TeamSchema Validator', () => {
     const avai = new Team({
       'league': null,
       'fullName': 'Avaí Futebol Clube',
-      'logo': 'Link'
+      'logo': {
+        'mini': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_mini/real_madrid.png',
+        'small': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_small/real_madrid.png',
+        'normal': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_normal/real_madrid.png'
+      }
     })
     avai.validate((err) => {
       expect(err.errors.league).to.exists();
@@ -56,7 +68,11 @@ lab.experiment('Model Test ==> TeamSchema Validator', () => {
       'league': 'notObjectID',
       'fullName': 'Avaí Futebol Clube',
       'shortName': 'Avai',
-      'logo': 'Link'
+      'logo': {
+        'mini': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_mini/real_madrid.png',
+        'small': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_small/real_madrid.png',
+        'normal': 'https://storage.googleapis.com/iguess-static-files/uefa/la_liga_normal/real_madrid.png'
+      }
     })
     avai.validate((err) => {
       expect(err.errors.league).to.exists();
