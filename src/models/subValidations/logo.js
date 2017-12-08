@@ -2,6 +2,8 @@
 
 const mongoose = require('mongoose')
 
+const optionsSchemas = require('../optionsSchemas/optionsSchemas')
+
 const Schema = mongoose.Schema
 
 const logoSchema = new Schema({
@@ -17,6 +19,6 @@ const logoSchema = new Schema({
     type: String,
     required: true
   }
-})
+}, optionsSchemas._idAndVersionKeyDisable)
 
 module.exports = logoSchema
