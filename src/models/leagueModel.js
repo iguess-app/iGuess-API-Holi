@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const coincidents = require('iguess-api-coincidents')
 
 const optionsSchemas = require('./optionsSchemas/optionsSchemas')
+const logoSchema = require('./subValidations/logo')
 const db = require('./connect')
 
 const Schema = mongoose.Schema
@@ -30,7 +31,16 @@ const leagueSchema = new Schema({
   },
   association: {
     type: String,
-    validate: [_validAssociation, String(serverErrors.notAssociationValid)]    
+    validate: [_validAssociation, String(serverErrors.notAssociationValid)],
+    required: true
+  },
+  continental: {
+    type: Boolean,
+    required: true
+  },
+  flag: {
+    type: logoSchema,
+    required: true
   }
 }, optionsSchemas.versionKeyDisable)
 
