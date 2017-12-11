@@ -9,7 +9,7 @@ const FOUR_HOURS = ONE_SECOND * 60 * 60 * 4
 
 const _startWorker = () => {
   log.info('==================> ROUTINE STARTED: update All match Schedule <==================')
-  updateAllFixtureService({}, {language: 'en-us'})
+  updateAllFixtureService()
 }
 
 setInterval(_startWorker, FOUR_HOURS)

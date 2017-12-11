@@ -10,7 +10,9 @@ const FIFTHTEEN_SECONDS = 15000
 const _startMatchDayResultWorker = () => {
   log.info('==================> ROUTINE STARTED: update Match Day Results <==================')
   //TODO: Criar regra para pegar por campeonato e somente em dias e horarios dos jogos
-  updateMatchDayResultService({}, {language: 'en-us'})
+  updateMatchDayResultService({}, {
+    language: 'en-us'
+  })
 }
 
-setInterval(_startMatchDayResultWorker, FIFTHTEEN_SECONDS)
+//setInterval(_startMatchDayResultWorker, FIFTHTEEN_SECONDS)

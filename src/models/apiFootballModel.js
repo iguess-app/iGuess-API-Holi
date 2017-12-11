@@ -10,39 +10,19 @@ const mongo = coincidents.Config.mongo
 const serverErrors = coincidents.Utils.errorUtils.serverErrors
 const Schema = mongoose.Schema
 
-const datePeriodSchema = new Schema({
-  initDate: {
-    type: Date,
-    required: true
-  },
-  finalDate: {
-    type: Date,
-    required: true
-  }
-})
-
-const championshipSchema = new Schema({
-  league: {
+const apiFootballSchema = new Schema({
+  currentChampionshipRef: {
     type: String,
     required: true,
     validate: [mongo.checkObjectId, String(serverErrors.notMongoIdValid)]
   },
-  season: {
-    type: String,
-    required: true
+  description: {
+    type: String
   },
-  championship: {
-    type: String,
-    required: true
-  },
-  championshipActive: {
-    type: Boolean,
-    required: true
-  },
-  date: {
-    type: datePeriodSchema,
+  leagueIdApiFootbal: {
+    type: Number,
     required: true
   }
 }, optionsSchemas.versionKeyDisable)
 
-module.exports = db.model('championships', championshipSchema)
+module.exports = db.model('api_footballs', apiFootballSchema)
