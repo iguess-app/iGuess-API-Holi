@@ -1,18 +1,16 @@
 'use strict'
 
-const log = require('iguess-api-coincidents').Managers.logManager
+const coincidents = require('iguess-api-coincidents')
 
 const updateMatchDayResultService = require('../../services/fixtures/updateMatchDayResultService')
 
-const SEVEN_SECONDS = 7000
-const FIFTHTEEN_SECONDS = 15000
+const log = coincidents.Managers.logManager
+const Config = coincidents.Config
 
 const _startMatchDayResultWorker = () => {
   log.info('==================> ROUTINE STARTED: update Match Day Results <==================')
-  //TODO: Criar regra para pegar por campeonato e somente em dias e horarios dos jogos
-  updateMatchDayResultService({}, {
-    language: 'en-us'
-  })
+  updateMatchDayResultService()
 }
+setInterval(_startMatchDayResultWorker, Config.apiFootball.intervalBetweenRequests)
 
-//setInterval(_startMatchDayResultWorker, FIFTHTEEN_SECONDS)
+//TODO: Criar regra para pegar por campeonato e somente em dias e horarios dos jogos

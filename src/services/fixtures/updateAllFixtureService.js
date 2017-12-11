@@ -2,6 +2,7 @@
 
 const moment = require('moment')
 const Promise = require('bluebird')
+const log = require('iguess-api-coincidents').Managers.logManager
 
 const insertNewMatchDayAtRoundsRepository = require('../../repositories/fixtures/insertNewMatchDayAtRoundsRepository')
 const getEventsRepository = require('../../repositories/apiFootball/getEventsRepository')
@@ -25,6 +26,7 @@ const insertAllMatches = () => {
           .then((newRound) => insertNewMatchDayAtRoundsRepository(newRound))
       })
     })
+    .catch((err) => log.error(err))
 }
 
 const _buildRequestToGetEvents = (championships) => {
@@ -44,7 +46,7 @@ const _buildRequestToGetEvents = (championships) => {
       return leagueObj
     })
   ).then((arrayOfArrayOfLeagueObj) => _joinToAOnlyArray(arrayOfArrayOfLeagueObj))
-} 
+}
 
 
 const _joinToAOnlyArray = (arrayOfArrayOfLeagueObj) => {
