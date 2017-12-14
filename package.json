@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "set MONGO_DB=holiDB&&set SERVER_PORT=9001&&set REDIS_HOST=35.199.64.70&&set REDIS_KEY=wAMK4Hig&& node app.js",
-    "test": "set MONGO_DB=holiDBtest&&set ENV=test&&lab -v",
-    "test-cov": "set MONGO_DB=holiDBtest&&set ENV=test&&lab -v -t 70",
-    "test-cov-html": "set MONGO_DB=holiDBtest&&set ENV=test&&lab -r html -o coverage.html"
+    "start": "node app.js",
+    "gg": "set MONGO_DB=holiDB&&set SERVER_PORT=9001&&set REDIS_HOST=35.199.64.70&&set REDIS_KEY=wAMK4Hig&&set MONGO_PERSONALDB_ADDRESS=&&set MONGO_HOLIDB_ADDRESS=&&set MONGO_GUESSDB_ADDRESS=&& node app.js",
+    "test": "set MONGO_DB=holiDBtest&&set MONGO_PERSONALDB_ADDRESS=&&set MONGO_HOLIDB_ADDRESS=&&set MONGO_GUESSDB_ADDRESS=&&set ENV=test&&lab -v",
+    "test-cov": "set MONGO_DB=holiDBtest&&set MONGO_PERSONALDB_ADDRESS=&&set MONGO_HOLIDB_ADDRESS=&&set MONGO_GUESSDB_ADDRESS=&&set ENV=test&&lab -v -t 70",
+    "test-cov-html": "set MONGO_DB=holiDBtest&&set MONGO_PERSONALDB_ADDRESS=&&set MONGO_HOLIDB_ADDRESS=&&set MONGO_GUESSDB_ADDRESS=&&set ENV=test&&lab -r html -o coverage.html"
   },
   "engines": {
     "node": "8.2.1"
