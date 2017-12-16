@@ -13,3 +13,5 @@ const _startWorker = () => {
 }
 
 setInterval(_startWorker, FOUR_HOURS)
+
+_startWorker()

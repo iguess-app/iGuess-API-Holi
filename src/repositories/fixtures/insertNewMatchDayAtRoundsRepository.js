@@ -10,7 +10,8 @@ const insertNewMatchDayAtRoundsRepository = (newRounds) =>
 
   newRounds.map((newRoundDay) => {
     const searchQuery = {
-      unixDate: newRoundDay.unixDate
+      unixDate: newRoundDay.unixDate,
+      championshipRef: newRoundDay.championshipRef
     }
 
     return Round.findOne(searchQuery)
