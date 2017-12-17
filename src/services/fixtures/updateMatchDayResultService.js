@@ -22,7 +22,7 @@ const updateMatchDayResults = () => {
         .then((matchesEvents) => getAllTeamsObj(matchesEvents))
         .then((matchesEvents) => apiFootballGetEventsParser(matchesEvents))
         .then((matchesEvents) => _filteringTimeZoneDay(matchesEvents, apiFootballLeagueObj.dateFrom))
-        .then((matchesEvents) => _settingDateAndCallingRepository(matchesEvents, apiFootballLeagueObj.dateFrom))
+        .then((matchesEvents) => _settingDateAndCallingRepository(matchesEvents, apiFootballLeagueObj))
       )
     })
     .catch((err) => log.error(err))
@@ -59,10 +59,10 @@ const _filteringTimeZoneDay = (matchesEvents, dateFrom) => {
   return matchesEvents.filter((match) => moment(match.initTime).format('YYYY-MM-DD') === dateFrom)
 }
 
-const _settingDateAndCallingRepository = (matchesEvents, dateFrom) => {
-  const date = moment(dateFrom, 'YYYY-MM-DD').format()
+const _settingDateAndCallingRepository = (matchesEvents, apiFootballLeagueObj) => {
+  const date = moment(apiFootballLeagueObj.dateFrom, 'YYYY-MM-DD').format()
   matchesEvents.date = date
-  updateMatchDayResultsRepository(matchesEvents)
+  updateMatchDayResultsRepository(matchesEvents, apiFootballLeagueObj)
 }
 
 module.exports = updateMatchDayResults

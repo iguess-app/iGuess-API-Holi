@@ -2,10 +2,11 @@
 
 const Round = require('../../models/roundModel')
 
-const updateMatchDayResultsRepository = (matchDayEvents, dictionary) =>
+const updateMatchDayResultsRepository = (matchDayEvents, apiFootballLeagueObj) =>
 
   Round.findOne({
-    date: matchDayEvents.date
+    date: matchDayEvents.date,
+    championshipRef: apiFootballLeagueObj.currentChampionshipRef
   })
   .then((roundFound) => {
     matchDayEvents.forEach((match) => {
