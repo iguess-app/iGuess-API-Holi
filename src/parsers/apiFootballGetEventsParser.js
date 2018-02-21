@@ -2,8 +2,6 @@
 
 const moment = require('moment')
 
-const MINUTE_ZERO = '0\''
-
 const apiFootballGetEventsParser = (matchesEvents) =>
   matchesEvents.map((match) => {
     const matchObj = {
