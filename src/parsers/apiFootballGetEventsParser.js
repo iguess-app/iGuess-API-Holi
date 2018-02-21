@@ -1,19 +1,21 @@
 'use strict'
 
 const moment = require('moment')
-const momentTimezone = require('moment-timezone')
 
-const TIMEZONE_DIFF_FROM_API_FOOTBALL = 3
-
-//TODO: Ao inves de dar subtract 5 horas, da um parse timezone brasilia ou SP
+const MINUTE_ZERO = '0\''
 
 const apiFootballGetEventsParser = (matchesEvents) =>
   matchesEvents.map((match) => {
     const matchObj = {
-      initTime: moment(match.match_date+match.match_time, 'YYYY-MM-DDHH:mm').subtract(TIMEZONE_DIFF_FROM_API_FOOTBALL, 'hours').format(),
+      initTime: moment(`${match.match_date}${match.match_time}Z`, 'YYYY-MM-DDHH:mmZ').utc().format(),
       ended: match.match_status === 'FT',
       homeTeam: match.homeTeamObj,
-      awayTeam: match.awayTeamObj
+      awayTeam: match.awayTeamObj,
+      started: _getIfStarted(match)
+    }
+
+    if (matchObj.started && !matchObj.ended) {
+      matchObj.minutes = match.match_status
     }
 
     if (match.match_hometeam_score !== '' && match.match_hometeam_score !== '?') {
@@ -23,5 +25,7 @@ const apiFootballGetEventsParser = (matchesEvents) =>
 
     return matchObj
   })
+
+const _getIfStarted = (match) => match.match_status !== ''
 
 module.exports = apiFootballGetEventsParser
