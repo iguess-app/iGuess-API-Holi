@@ -23,6 +23,7 @@ const updateMatchDayResults = () => {
         .then((matchesEvents) => apiFootballGetEventsParser(matchesEvents))
         .then((matchesEvents) => _filteringTimeZoneDay(matchesEvents, apiFootballLeagueObj.dateFrom))
         .then((matchesEvents) => _settingDateAndCallingRepository(matchesEvents, apiFootballLeagueObj))
+        .catch((err) => log.error(err))
       )
     })
     .catch((err) => log.error(err))

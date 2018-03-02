@@ -22,14 +22,11 @@ const getEvents = (reqBody) => {
 
   return requestManager.get(uri, {}, obj)
     .then((response) => _checkErrors(response))
-    .catch((err) => {
-      log.error(err)
-      throw err
-    })
 }
+
 const _checkErrors = (response) => {
   if (response.error) {
-    throw Boom.create(response.error, response.message)
+    throw new Error(JSON.stringify(response))
   }
 
   return response
