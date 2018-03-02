@@ -24,6 +24,7 @@ const insertAllMatches = () => {
           .then((matchesEvents) => _setMatchesPerDay(matchesEvents))
           .then((matchesEvents) => _buildNewRoundsObj(apiFootballLeagueObj, matchesEvents))
           .then((newRound) => insertNewMatchDayAtRoundsRepository(newRound))
+          .catch((err) => log.error(err))
       })
     })
     .catch((err) => log.error(err))

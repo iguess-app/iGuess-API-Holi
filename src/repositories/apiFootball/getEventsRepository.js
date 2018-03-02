@@ -1,12 +1,9 @@
 'use strict'
 
-const Boom = require('boom')
-
 const action = require('./enums/actionsEnums')
 const coincidents = require('iguess-api-coincidents')
 
 const requestManager = coincidents.Managers.requestManager
-const log = coincidents.Managers.logManager
 const Config = coincidents.Config
 
 const getEvents = (reqBody) => {
