@@ -4,14 +4,13 @@ const log = require('iguess-api-coincidents').Managers.logManager
 
 const updateAllFixtureService = require('../../services/fixtures/updateAllFixtureService')
 
-const ONE_SECOND = 1000
-const FOUR_HOURS = ONE_SECOND * 60 * 60 * 4
+const FOUR_HOURS_IN_MILI_SECONDS = 144e5
 
 const _startWorker = () => {
   log.info('==================> ROUTINE STARTED: update All match Schedule <==================')
   updateAllFixtureService()
 }
 
-setInterval(_startWorker, FOUR_HOURS)
+setInterval(_startWorker, FOUR_HOURS_IN_MILI_SECONDS)
 
 _startWorker()
