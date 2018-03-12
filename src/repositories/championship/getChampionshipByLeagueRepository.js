@@ -3,8 +3,6 @@
 const Boom = require('boom')
 
 const Championship = require('../../models/championshipModel')
-const Round = require('../../models/roundModel')
-const QueryUtils = require('iguess-api-coincidents').Utils.queryUtils
 
 const getChampionshipByLeague = (reqBody) => _findChampionshipByLeague(reqBody)
 

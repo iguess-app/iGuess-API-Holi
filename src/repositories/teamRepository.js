@@ -7,12 +7,12 @@ const QueryUtils = require('iguess-api-coincidents').Utils.queryUtils
 const League = require('../models/leagueModel')
 const Team = require('../models/teamModel')
 
-const leagueById = (id) =>
-Team.findOne({_id: id}) 
-  .then((league) => QueryUtils.makeObject(league))
+const leagueById = (_id) =>
+  Team.findOne({_id}) 
+    .then((league) => QueryUtils.makeObject(league))
 
-const teamById = (id) =>
-  Team.findOne({_id: id}) 
+const teamById = (_id) =>
+  Team.findOne({_id}) 
     .then((team) => QueryUtils.makeObject(team))
 
 const getTeams = (reqBody) => 

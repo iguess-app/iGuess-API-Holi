@@ -1,8 +1,5 @@
 'use strict'
 
-const Boom = require('boom');
-const Promise = require('bluebird');
-
 const Championship = require('../../models/championshipModel')
 const QueryUtils = require('iguess-api-coincidents').Utils.queryUtils
 
