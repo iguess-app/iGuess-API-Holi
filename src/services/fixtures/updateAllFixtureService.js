@@ -13,9 +13,10 @@
 
 'use strict'
 
-const moment = require('moment')
+const moment = require('moment-timezone')
 const Promise = require('bluebird')
 const log = require('iguess-api-coincidents').Managers.logManager
+const { dateManager } = require('../../managers')
 
 const EXISTENT_INDEX = 0
 
@@ -95,10 +96,11 @@ const _setMatchesPerDay = (matchesEvents) => {
 
 const _buildNewRoundsObj = (payload, matchesEvents) => {
   const newRoundsObj = matchesEvents.map((matchDay) => {
+    const UNIX_DATE_ALIAS = 'X'
     const newRound = {
       championshipRef: payload.currentChampionshipRef,
-      date: moment(matchDay.date, 'DD/MM/YYYY').format(),
-      unixDate: Number(moment(matchDay.date, 'DD/MM/YYYY').format('X')),
+      date: dateManager.getUTCDate(matchDay.date, 'DD/MM/YYYY'),
+      unixDate: Number(dateManager.getUTCDate(matchDay.date, 'DD/MM/YYYY', UNIX_DATE_ALIAS)),
       games: matchDay.matches
     }
   

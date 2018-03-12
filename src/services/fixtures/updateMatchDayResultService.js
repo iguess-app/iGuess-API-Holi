@@ -1,9 +1,9 @@
 'use strict'
 
-const moment = require('moment')
 const Promise = require('bluebird')
 const log = require('iguess-api-coincidents').Managers.logManager
 
+const { dateManager } = require('../../managers')
 const getEventsRepository = require('../../repositories/apiFootball/getEventsRepository')
 const apiFootballGetEventsParser = require('../../parsers/apiFootballGetEventsParser')
 const updateMatchDayResultsRepository = require('../../repositories/fixtures/updateMatchDayResultsRepository')
@@ -13,15 +13,14 @@ const getAllChampionshipRepository = require('../../repositories/championship/ge
 
 const updateMatchDayResults = () => {
   const onlyActiveObj = { onlyActive: true }
-  
+
   return getAllChampionshipRepository(onlyActiveObj)
     .then((championships) => _buildRequestToGetEvents(championships))
     .then((simpleArrayWithAllApiFootballLeagueObj) => {
-      simpleArrayWithAllApiFootballLeagueObj.forEach((apiFootballLeagueObj) => 
+      simpleArrayWithAllApiFootballLeagueObj.forEach((apiFootballLeagueObj) =>
         getEventsRepository(apiFootballLeagueObj)
         .then((matchesEvents) => getAllTeamsObj(matchesEvents))
         .then((matchesEvents) => apiFootballGetEventsParser(matchesEvents))
-        .then((matchesEvents) => _filteringTimeZoneDay(matchesEvents, apiFootballLeagueObj.dateFrom))
         .then((matchesEvents) => _settingDateAndCallingRepository(matchesEvents, apiFootballLeagueObj))
         .catch((err) => log.error(err))
       )
@@ -36,15 +35,16 @@ const _buildRequestToGetEvents = (championships) => {
 
     return getLeagueIdByChampionshipRefRepository(championshipFilteredObj)
   })
-  
+
   return Promise.map(promiseArray, (leaguesObj) => _addDatesToObj(leaguesObj))
     .then((arrayOfArrayOfLeagueObj) => _joinToAOnlyArray(arrayOfArrayOfLeagueObj))
-} 
+}
 
-const _addDatesToObj = (leaguesObj) => 
+const _addDatesToObj = (leaguesObj) =>
   leaguesObj.map((leagueObj) => {
-    leagueObj.dateFrom = moment().format('YYYY-MM-DD')
-    leagueObj.dateTo = moment().add(1, 'day').format('YYYY-MM-DD')
+    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD')
+    leagueObj.dateFrom = UTC_TODAY
+    leagueObj.dateTo = UTC_TODAY
 
     return leagueObj
   })
@@ -56,12 +56,8 @@ const _joinToAOnlyArray = (arrayOfArrayOfLeagueObj) => {
   return simpleArrayWithAllApiFootballLeagueObj
 }
 
-const _filteringTimeZoneDay = (matchesEvents, dateFrom) => {
-  return matchesEvents.filter((match) => moment(match.initTime).format('YYYY-MM-DD') === dateFrom)
-}
-
 const _settingDateAndCallingRepository = (matchesEvents, apiFootballLeagueObj) => {
-  const date = moment(apiFootballLeagueObj.dateFrom, 'YYYY-MM-DD').format()
+  const date = dateManager.getUTCDate(apiFootballLeagueObj.dateFrom)
   matchesEvents.date = date
   updateMatchDayResultsRepository(matchesEvents, apiFootballLeagueObj)
 }
