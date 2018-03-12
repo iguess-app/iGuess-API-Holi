@@ -13,7 +13,6 @@
 
 'use strict'
 
-const moment = require('moment-timezone')
 const Promise = require('bluebird')
 const log = require('iguess-api-coincidents').Managers.logManager
 const { dateManager } = require('../../managers')
@@ -56,8 +55,8 @@ const _buildRequestToGetEvents = (championships) => {
   
   return Promise.map(promiseArray, (leaguesObj, index) => 
     leaguesObj.map((leagueObj) => {
-      leagueObj.dateFrom = moment(championships[index].date.initDate).format('YYYY-MM-DD')
-      leagueObj.dateTo = moment(championships[index].date.finalDate).format('YYYY-MM-DD')
+      leagueObj.dateFrom = dateManager.getUTCDate(championships[index].date.initDate, '', 'YYYY-MM-DD')
+      leagueObj.dateTo = dateManager.getUTCDate(championships[index].date.finalDate, '', 'YYYY-MM-DD')
 
       return leagueObj
     })
@@ -74,7 +73,9 @@ const _joinToAOnlyArray = (arrayOfArrayOfLeagueObj) => {
 
 const _setMatchesPerDay = (matchesEvents) => {
   const matchPerDayArray = matchesEvents.reduce((acumulator, match) => {
-    const dateAlreadySettedIndex = acumulator.findIndex((matchDay) => matchDay.date === moment(match.initTime).format('DD/MM/YYYY'))
+    const dateAlreadySettedIndex = acumulator.findIndex((matchDay) => 
+      matchDay.date === dateManager.getUTCDate(match.initTime, '', 'DD/MM/YYYY')
+    )
 
     if (dateAlreadySettedIndex >= EXISTENT_INDEX) {
       acumulator[dateAlreadySettedIndex].matches.push(match)
@@ -82,7 +83,7 @@ const _setMatchesPerDay = (matchesEvents) => {
       return acumulator
     }
     const newMatchDayObj = {
-      date: moment(match.initTime).format('DD/MM/YYYY'),
+      date: dateManager.getUTCDate(match.initTime, '', 'DD/MM/YYYY'),
       matches: [match]
     }
     acumulator.push(newMatchDayObj)

@@ -1,11 +1,11 @@
 'use strict'
 
-const moment = require('moment')
+const { dateManager } = require('../managers')
 
 const apiFootballGetEventsParser = (matchesEvents) =>
   matchesEvents.map((match) => {
     const matchObj = {
-      initTime: _parseToIsoDateUTCFormat(match),
+      initTime: dateManager.getUTCDate(match.match_date+match.match_time, 'YYYY-MM-DDHH:mm'),
       ended: _getIfEnded(match),
       homeTeam: match.homeTeamObj,
       awayTeam: match.awayTeamObj,
@@ -21,8 +21,6 @@ const apiFootballGetEventsParser = (matchesEvents) =>
 
     return matchObj
   })
-
-const _parseToIsoDateUTCFormat = (match) => moment(`${match.match_date}${match.match_time}Z`, 'YYYY-MM-DDHH:mmZ').utc().format()
 
 const _getIfStarted = (match) => match.match_status !== ''
 
