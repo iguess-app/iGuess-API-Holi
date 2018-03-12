@@ -25,4 +25,4 @@ The Holi worker have a user to holiDB Read and Write
 * To all tests that is IO (InputOutput) tests, you must comment a description about the IO, like if a document need to exist in a DB
 * To all IO tests, at test name it necessary to put [IO] at prefix
 * All functions and variables need to be in English
-* All date/hour treatment must be coded at dateManager
+* All date/hour treatment must be coded at coincident dateManager

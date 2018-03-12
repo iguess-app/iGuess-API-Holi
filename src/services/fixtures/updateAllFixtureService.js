@@ -15,7 +15,7 @@
 
 const Promise = require('bluebird')
 const log = require('iguess-api-coincidents').Managers.logManager
-const { dateManager } = require('../../managers')
+const { dateManager } = require('iguess-api-coincidents').Managers
 
 const EXISTENT_INDEX = 0
 

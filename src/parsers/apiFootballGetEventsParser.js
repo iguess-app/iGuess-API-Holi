@@ -1,6 +1,6 @@
 'use strict'
 
-const { dateManager } = require('../managers')
+const { dateManager } = require('iguess-api-coincidents').Managers
 
 const apiFootballGetEventsParser = (matchesEvents) =>
   matchesEvents.map((match) => {
