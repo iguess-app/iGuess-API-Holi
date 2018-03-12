@@ -19,14 +19,20 @@ const getEvents = (reqBody) => {
 
   return requestManager.get(uri, {}, obj)
     .then((response) => _checkErrors(response))
+    .catch((apiFootballError) => _treatError(apiFootballError))
 }
 
 const _checkErrors = (response) => {
   if (response.error) {
-    throw new Error(JSON.stringify(response))
+    throw response
   }
 
   return response
+}
+
+const _treatError = (apiFootballError) => {
+  const stringError = JSON.stringify({ apiFootballError })
+  throw Error(stringError)
 }
 
 module.exports = getEvents
