@@ -1,8 +1,23 @@
+/*
+  README 
+  STEPS
+  * Get all Actives Championships
+  * Get all 'league_id' by active championship
+  * Create the range date based in initDate and finalDate to each championship
+  * Do the requests to apiFootball
+  * Get teams obj from DB according to apiFootball teams names
+  * Parsing response
+  * Join matches by day
+  * Create a model obj to insert at Round collection
+*/
+
 'use strict'
 
 const moment = require('moment')
 const Promise = require('bluebird')
 const log = require('iguess-api-coincidents').Managers.logManager
+
+const EXISTENT_INDEX = 0
 
 const insertNewMatchDayAtRoundsRepository = require('../../repositories/fixtures/insertNewMatchDayAtRoundsRepository')
 const getEventsRepository = require('../../repositories/apiFootball/getEventsRepository')
@@ -31,7 +46,6 @@ const insertAllMatches = () => {
 }
 
 const _buildRequestToGetEvents = (championships) => {
-  
   const promiseArray = championships.map((championship) => {
     const championshipFilteredObj = {}
     championshipFilteredObj.championshipRef = championship.id
@@ -61,7 +75,7 @@ const _setMatchesPerDay = (matchesEvents) => {
   const matchPerDayArray = matchesEvents.reduce((acumulator, match) => {
     const dateAlreadySettedIndex = acumulator.findIndex((matchDay) => matchDay.date === moment(match.initTime).format('DD/MM/YYYY'))
 
-    if (dateAlreadySettedIndex >= 0) {
+    if (dateAlreadySettedIndex >= EXISTENT_INDEX) {
       acumulator[dateAlreadySettedIndex].matches.push(match)
 
       return acumulator
@@ -95,7 +109,3 @@ const _buildNewRoundsObj = (payload, matchesEvents) => {
 }
 
 module.exports = insertAllMatches
-
-/*Pega todos campeonatos ativos
-  Pega o league_id dos cara para cada champeonato ativo
-  Criar um objeto com o league_id e o range de data maximo do campeonato ativo para cada league_id de um campeonato*/
