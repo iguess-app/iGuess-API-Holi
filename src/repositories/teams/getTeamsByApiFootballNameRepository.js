@@ -1,7 +1,7 @@
 'use strict'
 
 const Boom = require('boom')
-const log = require('iguess-api-coincidents').Managers.logManager
+const { log } = require('iguess-api-coincidents').Managers
 
 const Teams = require('../../models/teamModel')
 
