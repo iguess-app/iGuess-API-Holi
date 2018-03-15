@@ -41,7 +41,7 @@ const _buildRequestToGetEvents = (championships) => {
 
 const _addDatesToObj = (leaguesObj) =>
   leaguesObj.map((leagueObj) => {
-    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD')
+    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD') //TODO: Add uma env variable para qd quiser forçar um dia pra essa rotina
     leagueObj.dateFrom = UTC_TODAY
     leagueObj.dateTo = UTC_TODAY
 
