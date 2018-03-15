@@ -5,7 +5,7 @@ const { dateManager } = require('iguess-api-coincidents').Managers
 const apiFootballGetEventsParser = (matchesEvents) =>
   matchesEvents.map((match) => {
     const matchObj = {
-      initTime: dateManager.getUTCDate(match.match_date+match.match_time, 'YYYY-MM-DDHH:mm'),
+      initTime: dateManager.convertAPIFootballToUTC(match.match_date+match.match_time, 'YYYY-MM-DDHH:mm'),
       ended: _getIfEnded(match),
       homeTeam: match.homeTeamObj,
       awayTeam: match.awayTeamObj,
