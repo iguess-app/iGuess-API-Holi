@@ -1,7 +1,7 @@
 'use strict'
 
 const Promise = require('bluebird')
-const { dateManager, log } = require('iguess-api-coincidents').Managers
+const coincidents = require('iguess-api-coincidents')
 
 const getEventsRepository = require('../../repositories/apiFootball/getEventsRepository')
 const apiFootballGetEventsParser = require('../../parsers/apiFootballGetEventsParser')
@@ -9,6 +9,9 @@ const updateMatchDayResultsRepository = require('../../repositories/fixtures/upd
 const getAllTeamsObj = require('./sharedFunctions/getAllTeamsObjFunction')
 const getLeagueIdByChampionshipRefRepository = require('../../repositories/apiFootball/apiFootballDB/getLeagueIdByChampionshipRefRepository')
 const getAllChampionshipRepository = require('../../repositories/championship/getAllChampionshipRepository')
+
+const config = coincidents.Config
+const { dateManager, log } = coincidents.Managers
 
 const updateMatchDayResults = () => {
   const onlyActiveObj = { onlyActive: true }
@@ -39,14 +42,17 @@ const _buildRequestToGetEvents = (championships) => {
     .then((arrayOfArrayOfLeagueObj) => _joinToAOnlyArray(arrayOfArrayOfLeagueObj))
 }
 
-const _addDatesToObj = (leaguesObj) =>
-  leaguesObj.map((leagueObj) => {
-    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD') //TODO: Add uma env variable para qd quiser forçar um dia pra essa rotina
-    leagueObj.dateFrom = UTC_TODAY
-    leagueObj.dateTo = UTC_TODAY
+const _addDatesToObj = (leaguesObj) => {
+  const forcedDate = config.updateMatchResultRoutine
+
+  return leaguesObj.map((leagueObj) => {
+    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD')
+    leagueObj.dateFrom = forcedDate.dateFromForced || UTC_TODAY
+    leagueObj.dateTo = forcedDate.dateToForced || UTC_TODAY
 
     return leagueObj
   })
+}
 
 const _joinToAOnlyArray = (arrayOfArrayOfLeagueObj) => {
   const simpleArrayWithAllApiFootballLeagueObj = []
