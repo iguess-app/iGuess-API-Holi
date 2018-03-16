@@ -11,6 +11,7 @@ The Holi worker have a user to holiDB Read and Write
 ## Steps to Add a new Championship
 * Add static files at Google Storage (If it does not exist)
 * Add the new League Collection to Mongo holiDB (If it does not exist)
+* If the League Collection already exist, check if the field haveActiveLine is true
 * Add the new Teams Collection to Mongo holiDB (If it does not exist)
 * Add the new championship Collection to Mongo holiDB
 * Add the new api_footballs Collection to Mongo holiDB (If it does not exist)
@@ -26,3 +27,5 @@ The Holi worker have a user to holiDB Read and Write
 * To all IO tests, at test name it necessary to put [IO] at prefix
 * All functions and variables need to be in English
 * All date/hour treatment must be coded at coincident dateManager
+
+//TODO: Create a routine to update haveActiveLines according to active championships?
