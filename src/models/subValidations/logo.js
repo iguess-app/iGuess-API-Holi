@@ -9,15 +9,15 @@ const Schema = mongoose.Schema
 const logoSchema = new Schema({
   mini: {
     type: String,
-    required: true
+    default: ''
   },
   small: {
     type: String,
-    required: true
+    default: ''
   },
   normal: {
     type: String,
-    required: true
+    default: ''
   }
 }, optionsSchemas._idAndVersionKeyDisable)
 
