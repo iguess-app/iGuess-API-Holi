@@ -37,8 +37,8 @@ const _buildRequestToGetEvents = (championships) => {
   
   return Promise.map(promiseArray, (leaguesObj, index) => 
     leaguesObj.map((leagueObj) => {
-      leagueObj.dateFrom = dateManager.getUTCDate(championships[index].date.initDate, '', 'YYYY-MM-DD')
-      leagueObj.dateTo = dateManager.getUTCDate(championships[index].date.finalDate, '', 'YYYY-MM-DD')
+      leagueObj.dateFrom = dateManager.getDate(championships[index].date.initDate, '', 'YYYY-MM-DD')
+      leagueObj.dateTo = dateManager.getDate(championships[index].date.finalDate, '', 'YYYY-MM-DD')
 
       return leagueObj
     })
