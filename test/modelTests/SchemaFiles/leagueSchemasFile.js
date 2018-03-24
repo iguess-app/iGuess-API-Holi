@@ -12,7 +12,8 @@ const correctSchema = {
     'mini': 'https://storage.googleapis.com/iguess-static-files/nationals/mini/portugal.png',
     'small': 'https://storage.googleapis.com/iguess-static-files/nationals/small/portugal.png',
     'normal': 'https://storage.googleapis.com/iguess-static-files/nationals/normal/portugal.png'
-  }
+  },
+  'haveActiveLines': true
 }
 
 const withOutContryInitials = {
@@ -21,7 +22,8 @@ const withOutContryInitials = {
   'name': 'UEFA Champions League',
   'serie': 1.0,
   'continental': true,
-  'association': 'UEFA'
+  'association': 'UEFA',
+  'haveActiveLines': true
 }
 
 const serieNotNumber = {
@@ -35,7 +37,8 @@ const serieNotNumber = {
     'mini': 'https://storage.googleapis.com/iguess-static-files/nationals/mini/spain.png',
     'small': 'https://storage.googleapis.com/iguess-static-files/nationals/small/spain.png',
     'normal': 'https://storage.googleapis.com/iguess-static-files/nationals/normal/spain.png'
-  }
+  },
+  'haveActiveLines': true
 }
 
 module.exports = {

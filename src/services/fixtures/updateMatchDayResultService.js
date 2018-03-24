@@ -23,7 +23,7 @@ const updateMatchDayResults = () => {
         getEventsRepository(apiFootballLeagueObj)
         .then((matchesEvents) => getAllTeamsObj(matchesEvents))
         .then((matchesEvents) => apiFootballGetEventsParser(matchesEvents))
-        .then((matchesEvents) => _settingDateAndCallingRepository(matchesEvents, apiFootballLeagueObj))
+        .then((matchesEvents) => updateMatchDayResultsRepository(matchesEvents, apiFootballLeagueObj))
         .catch((err) => log.error(err))
       )
     })
@@ -59,12 +59,6 @@ const _joinToAOnlyArray = (arrayOfArrayOfLeagueObj) => {
   arrayOfArrayOfLeagueObj.map((arrayOfLeagueObj) => arrayOfLeagueObj.map((leagueObj) => simpleArrayWithAllApiFootballLeagueObj.push(leagueObj)))
 
   return simpleArrayWithAllApiFootballLeagueObj
-}
-
-const _settingDateAndCallingRepository = (matchesEvents, apiFootballLeagueObj) => {
-  const date = dateManager.getUTCDate(apiFootballLeagueObj.dateFrom)
-  matchesEvents.date = date
-  updateMatchDayResultsRepository(matchesEvents, apiFootballLeagueObj)
 }
 
 module.exports = updateMatchDayResults

@@ -1,33 +1,29 @@
 'use strict'
 
-const Round = require('../../models/roundModel')
+const sharedFunctions = require('./sharedFunctions')
+const Match = require('../../models/matchModel')
 
-const EXISTENT_INDEX = 0
+const updateMatchDayResultsRepository = (matchEvents, leagueObj) => {
+  matchEvents.forEach((match) => {
+    const searchQuery = {
+      matchRef: sharedFunctions.buildMatchRef(match, leagueObj)
+    }
 
-const updateMatchDayResultsRepository = (matchDayEvents, apiFootballLeagueObj) =>
-  Round.findOne({
-    date: matchDayEvents.date,
-    championshipRef: apiFootballLeagueObj.currentChampionshipRef
+    return Match.findOne(searchQuery)
+      .then((matchFound) => {
+          if (matchFound) {
+            matchFound.homeTeamScore = match.homeTeamScore
+            matchFound.awayTeamScore = match.awayTeamScore
+            matchFound.ended = match.ended
+            matchFound.started = match.started
+            if (match.minutes) {
+              match.minutes = matchFound.minutes = match.minutes
+            }
+          }
+        matchFound.save()
+      })
   })
-  .then((roundFound) => {
-    matchDayEvents.forEach((match) => {
-      const matchFoundIndex = roundFound.games.findIndex((matchFromDB) =>
-        matchFromDB.homeTeam.apiFootballName === match.homeTeam.apiFootballName &&
-        matchFromDB.awayTeam.apiFootballName === match.awayTeam.apiFootballName
-      )
+}
 
-      if (matchFoundIndex >= EXISTENT_INDEX) {
-        roundFound.games[matchFoundIndex].homeTeamScore = match.homeTeamScore
-        roundFound.games[matchFoundIndex].awayTeamScore = match.awayTeamScore
-        roundFound.games[matchFoundIndex].ended = match.ended
-        roundFound.games[matchFoundIndex].started = match.started
-        if (match.minutes) {
-          match.minutes = roundFound.games[matchFoundIndex].minutes = match.minutes
-        }
-      }
-    })
-
-    roundFound.save()
-  })
 
 module.exports = updateMatchDayResultsRepository
