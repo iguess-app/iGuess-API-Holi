@@ -46,7 +46,7 @@ const _addDatesToObj = (leaguesObj) => {
   const forcedDate = config.updateMatchResultRoutine
 
   return leaguesObj.map((leagueObj) => {
-    const UTC_TODAY = dateManager.getUTCToday('YYYY-MM-DD')
+    const UTC_TODAY = dateManager.getUTCNow('YYYY-MM-DD')
     leagueObj.dateFrom = forcedDate.dateFromForced || UTC_TODAY
     leagueObj.dateTo = forcedDate.dateToForced || UTC_TODAY
 
