@@ -10,20 +10,22 @@ const updateMatchDayResultsRepository = (matchEvents, leagueObj) => {
     }
 
     return Match.findOne(searchQuery)
-      .then((matchFound) => {
-          if (matchFound) {
-            matchFound.homeTeamScore = match.homeTeamScore
-            matchFound.awayTeamScore = match.awayTeamScore
-            matchFound.ended = match.ended
-            matchFound.started = match.started
-            if (match.minutes) {
-              match.minutes = matchFound.minutes = match.minutes
-            }
-          }
-        matchFound.save()
-      })
+      .then((matchFound) => _updateMatch(matchFound, match))
   })
 }
 
+const _updateMatch = (matchFound, match) => {
+  if (matchFound) {
+    matchFound.homeTeamScore = match.homeTeamScore
+    matchFound.awayTeamScore = match.awayTeamScore
+    matchFound.ended = match.ended
+    matchFound.started = match.started
+    matchFound.initTime = match.initTime
+    if (match.minutes) {
+      matchFound.minutes = match.minutes
+    }
+  }
+  matchFound.save()
+}
 
 module.exports = updateMatchDayResultsRepository
