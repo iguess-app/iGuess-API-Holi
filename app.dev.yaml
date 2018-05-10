@@ -19,3 +19,5 @@ env_variables:
   MONGO_HOLIDB_ADDRESS: mongodb://apiPersonalGG:58veNFJOLJefwOtA@personaldev-shard-00-00-ocyje.mongodb.net:27017,personaldev-shard-00-01-ocyje.mongodb.net:27017,personaldev-shard-00-02-ocyje.mongodb.net:27017/holiDB?ssl=true&replicaSet=PersonalDev-shard-0&authSource=admin
   MONGO_GUESSDB_ADDRESS: mongodb://apiPersonalGG:58veNFJOLJefwOtA@personaldev-shard-00-00-ocyje.mongodb.net:27017,personaldev-shard-00-01-ocyje.mongodb.net:27017,personaldev-shard-00-02-ocyje.mongodb.net:27017/guessDB?ssl=true&replicaSet=PersonalDev-shard-0&authSource=admin
   APIFOOTBAL_API_KEY: 6f60688e08d2657cb247eaa636b1604425ddd76ee4bacfd007f909442ea06404
+  APIFOOTBAL_TIMEZONE: Europe/Berlin
+  FOOTBALL_API_KEY: 565ec012251f932ea40000014e2dfc56fd6e404365794fad7a1929f4

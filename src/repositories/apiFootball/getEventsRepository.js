@@ -9,15 +9,21 @@ const Config = coincidents.Config
 const getEvents = (reqBody) => {
   const uri = Config.apiFootball.url
 
-  const obj = {
+  const queryStringObj = {
     action: action.getEvents,
     APIkey: Config.apiFootball.APIKey,
-    league_id: reqBody.leagueIdApiFootbal,
     from: reqBody.dateFrom,
     to: reqBody.dateTo
   }
 
-  return requestManager.get(uri, {}, obj)
+  if (reqBody.leagueIdApiFootbal) {
+    queryStringObj.league_id = reqBody.leagueIdApiFootbal
+  }
+  if (reqBody.countryIdApiFootball) {
+    queryStringObj.country_id = reqBody.countryIdApiFootball
+  }
+
+  return requestManager.get(uri, {}, queryStringObj)
     .then((response) => _checkErrors(response))
     .catch((apiFootballError) => _treatError(apiFootballError))
 }
