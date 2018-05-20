@@ -15,7 +15,8 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'date': {
         'initDate': '2017-08-01T00:00:00.000Z',
         'finalDate': '2018-06-01T00:00:00.000Z'
-      }
+      }, 
+      'translateFlag': 'brazilian'
     })
     campBR.validate((err) => {
       expect(err).to.equal(null)
@@ -32,10 +33,28 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'date': {
         'initDate': '2017-08-01T00:00:00.000Z',
         'finalDate': '2018-06-01T00:00:00.000Z'
-      }
+      }, 
+      'translateFlag': 'brazilianCup'
     })
     campBR.validate((err) => {
       expect(err.errors.league).to.exists()
+      done()
+    })
+  })
+
+  lab.test('ChampionshipSchema without translateFlag', (done) => {
+    const campBR = new Championship({
+      'league': '5872467bed1b02314e088',
+      'season': '2017',
+      'championship': 'Copa do Brasil',
+      'championshipActive': false,
+      'date': {
+        'initDate': '2017-08-01T00:00:00.000Z',
+        'finalDate': '2018-06-01T00:00:00.000Z'
+      }
+    })
+    campBR.validate((err) => {
+      expect(err.errors.translateFlag).to.exists()
       done()
     })
   })
@@ -47,7 +66,8 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'date': {
         'initDate': '2017-08-01T00:00:00.000Z',
         'finalDate': '2018-06-01T00:00:00.000Z'
-      }
+      }, 
+      'translateFlag': 'brazilian'
     })
     campBR.validate((err) => {
       expect(err.errors.season).to.exists()
@@ -65,7 +85,8 @@ lab.experiment('Model Test ==> ChampionshipSchema Validator', () => {
       'date': {
         'initDate': '2017-08-01T00:00:00.000Z',
         'finalDate': '2018-06-01T00:00:00.000Z'
-      }
+      }, 
+      'translateFlag': 'brazilian'
     })
     campBR.validate((err) => {
       expect(err.errors.championship).to.exists()
