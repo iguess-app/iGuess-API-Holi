@@ -47,8 +47,9 @@ const _addDatesToObj = (leaguesObj) => {
 
   return leaguesObj.map((leagueObj) => {
     const UTC_TODAY = dateManager.getUTCNow('YYYY-MM-DD')
+    const UTC_TOMMORROW = dateManager.addOneDayMore(UTC_TODAY, 'YYYY-MM-DD', 'YYYY-MM-DD')
     leagueObj.dateFrom = forcedDate.dateFromForced || UTC_TODAY
-    leagueObj.dateTo = forcedDate.dateToForced || UTC_TODAY
+    leagueObj.dateTo = forcedDate.dateToForced || UTC_TOMMORROW
 
     return leagueObj
   })

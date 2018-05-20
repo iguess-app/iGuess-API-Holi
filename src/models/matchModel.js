@@ -81,6 +81,9 @@ const matchSchema = new Schema({
   minutes: {
     type: String
   },
+  percentageCompleted: {
+    type: Number
+  },
   stadium: {
     type: String
   }

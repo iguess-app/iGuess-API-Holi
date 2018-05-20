@@ -23,6 +23,7 @@ const _updateMatch = (matchFound, match) => {
     matchFound.initTime = match.initTime
     if (match.minutes) {
       matchFound.minutes = match.minutes
+      matchFound.percentageCompleted = match.percentageCompleted
     }
   }
   matchFound.save()
