@@ -28,6 +28,12 @@ const teamSchema = new Schema({
   logo: {
     type: logoSchema,
     required: true
+  },
+  apiFootballName: {
+    type: String
+  },
+  translateFlag: {
+    type: String
   }
 }, optionsSchemas.versionKeyDisable)
 
