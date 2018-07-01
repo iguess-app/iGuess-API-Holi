@@ -20,7 +20,7 @@ const insertNewMatchDayAtRoundsRepository = (leagueObj, matchesEvents) =>
           Match.create(_buildNewMatchObj(match, leagueObj))
             .catch((err) => log.error(err))
         }
-        log.info(`Match already setted (championshipRef: ${leagueObj.currentChampionshipRef}, ${match.homeTeam.shortName} X  ${match.awayTeam.shortName} [${match.initTime}])`)
+        log.info(`Match already setted (championshipRef: ${leagueObj.currentChampionshipRef}, ${match.homeTeam.shortName} X ${match.awayTeam.shortName} [${match.initTime}])`)
         _updateMatchDataIfNeeds(matchFound, match)
       })
   }
@@ -39,15 +39,17 @@ const _buildNewMatchObj = (match, leagueObj) => ({
 })
 
 const _updateMatchDataIfNeeds = (matchFound, match) => {
-  matchFound.homeTeamScore = match.homeTeamScore
-  matchFound.awayTeamScore = match.awayTeamScore
-  matchFound.ended = match.ended
-  matchFound.started = match.started
-  matchFound.initTime = match.initTime
-  if (match.minutes) {
-    matchFound.minutes = match.minutes
+  if (!matchFound.manualForcedUpdate) {
+    matchFound.homeTeamScore = match.homeTeamScore
+    matchFound.awayTeamScore = match.awayTeamScore
+    matchFound.ended = match.ended
+    matchFound.started = match.started
+    matchFound.initTime = match.initTime
+    if (match.minutes) {
+      matchFound.minutes = match.minutes
+    }
+    matchFound.save()
   }
-  matchFound.save()
 }
 
 module.exports = insertNewMatchDayAtRoundsRepository

@@ -35,7 +35,7 @@ const apiFootballGetEventsParser = (matchesEvents) =>
 
 const _getIfStarted = (match) => match.match_status !== ''
 
-const _getIfEnded = (match) => match.match_status === 'FT'
+const _getIfEnded = (match) => match.match_status === 'FT' || match.match_status === 'AET'
 
 const _matchIsLive = (matchObj) => matchObj.started && !matchObj.ended
 
