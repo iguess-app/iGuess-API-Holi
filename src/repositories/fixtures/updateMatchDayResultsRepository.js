@@ -15,7 +15,7 @@ const updateMatchDayResultsRepository = (matchEvents, leagueObj) => {
 }
 
 const _updateMatch = (matchFound, match) => {
-  if (matchFound) {
+  if (matchFound && !matchFound.manualForcedUpdate) {
     matchFound.homeTeamScore = match.homeTeamScore
     matchFound.awayTeamScore = match.awayTeamScore
     matchFound.ended = match.ended

@@ -86,6 +86,10 @@ const matchSchema = new Schema({
   },
   stadium: {
     type: String
+  },
+  manualForcedUpdate: {
+    type: Boolean,
+    default: false
   }
 }, optionsSchemas.versionKeyDisable)
 
