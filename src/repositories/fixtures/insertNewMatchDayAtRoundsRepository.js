@@ -8,7 +8,6 @@ const Match = require('../../models/matchModel')
 const { log } = coincidents.Managers
 
 const insertNewMatchDayAtRoundsRepository = (leagueObj, matchesEvents) => 
-
   matchesEvents.map((match) => {
     const searchQuery = {
       matchRef: sharedFunctions.buildMatchRef(match, leagueObj)
@@ -23,8 +22,7 @@ const insertNewMatchDayAtRoundsRepository = (leagueObj, matchesEvents) =>
         log.info(`Match already setted (championshipRef: ${leagueObj.currentChampionshipRef}, ${match.homeTeam.shortName} X ${match.awayTeam.shortName} [${match.initTime}])`)
         _updateMatchDataIfNeeds(matchFound, match)
       })
-  }
-  )
+  })
 
 const _buildNewMatchObj = (match, leagueObj) => ({
   matchRef: sharedFunctions.buildMatchRef(match, leagueObj),

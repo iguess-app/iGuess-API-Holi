@@ -8,8 +8,8 @@ const DECIMAL_BASE = 10
 const POSITION_ZERO = 0
 const POSITION_ONE = 1
 
-const apiFootballGetEventsParser = (matchesEvents) =>
-  matchesEvents.map((match) => {
+const apiFootballGetEventsParser = (matchesEvents) => {
+  const expectedStructureOfMatches = matchesEvents.map((match) => {
     const matchObj = {
       initTime: dateManager.convertAPIFootballToUTC(match.match_date+match.match_time, 'YYYY-MM-DDHH:mm'),
       ended: _getIfEnded(match),
@@ -32,6 +32,10 @@ const apiFootballGetEventsParser = (matchesEvents) =>
 
     return matchObj
   })
+  const expectedStructureOfMatchesFiltered = expectedStructureOfMatches.filter((match) => match.homeTeam.teamRef && match.awayTeam.teamRef)
+
+  return expectedStructureOfMatchesFiltered
+}
 
 const _getIfStarted = (match) => match.match_status !== ''
 
